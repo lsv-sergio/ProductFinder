@@ -22,7 +22,7 @@ namespace ProductFinder
 		public void ConfigureServices(IServiceCollection services) {
 			services.AddSingleton<IFinderStorage, FinderStorage>();
 			services.AddHostedService<FinderLoader>();
-			services.AddControllersWithViews();
+			services.AddControllers();
 			// In production, the Angular files will be served from this directory
 			services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
 		}
@@ -45,9 +45,7 @@ namespace ProductFinder
 
 			app.UseRouting();
 			app.UseEndpoints(endpoints => {
-				endpoints.MapControllerRoute(
-					name: "default",
-					pattern: "{controller}/{action=Index}/{id?}");
+				endpoints.MapControllers();
 			});
 			app.UseSpa(spa => {
 				// To learn more about options for serving an Angular SPA from ASP.NET Core,
