@@ -28,8 +28,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\AtbIntegrator\AtbIntegrator\AtbIntegrator.csproj" />
-      <ProjectReference Include="..\..\VarusIntegrator\VarusIntegrator\VarusIntegrator.csproj" />
       <ProjectReference Include="..\Core\Core.csproj" />
     </ItemGroup>
 

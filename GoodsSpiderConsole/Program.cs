@@ -6,6 +6,7 @@
 	using System.Linq;
 	using System.Reflection;
 	using System.Text;
+	using System.Threading;
 	using System.Threading.Tasks;
 	using Core;
 
@@ -25,12 +26,13 @@
 			var files = Directory.GetFiles($"{Directory.GetCurrentDirectory()}\\Finders","*.dll",
 				SearchOption.TopDirectoryOnly);
 			var finderType = typeof(IProductFinder);
+			CancellationTokenSource cts = new CancellationTokenSource();
 			foreach (var file in files) {
 				var finderAssembly = Assembly.LoadFile(file);
 				var finders = finderAssembly.GetTypes()
 					.Where(t => finderType.IsAssignableFrom(t)).ToList();
 				result.AddRange(finders.Select(finder => Activator.CreateInstance(finder) as IProductFinder)
-					.Select(instance => instance?.Search(productName)));
+					.Select(instance => instance?.Search(productName, cts.Token)));
 			}
 
 			return result.ToArray();

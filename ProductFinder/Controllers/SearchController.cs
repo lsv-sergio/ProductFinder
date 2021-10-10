@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ProductFinder.Controllers
 {
-	using System;
 	using System.Collections.Generic;
+	using System.Threading;
 	using System.Threading.Tasks;
 	using Core;
 	using Services;
@@ -20,8 +20,9 @@ namespace ProductFinder.Controllers
 		[HttpGet("{productName}")]
 		public async Task<ActionResult<SearchResponse[]>> Get(string productName) {
 			var foundResult = new List<SearchResponse>();
+			CancellationTokenSource cts = new CancellationTokenSource();
 			foreach (IProductFinder productFinder in _finderStorage.GetFinders()) {
-				foundResult.Add(await productFinder.Search(productName));
+				foundResult.Add(await productFinder.Search(productName, cts.Token));
 			}
 			return Ok(foundResult);
 		}

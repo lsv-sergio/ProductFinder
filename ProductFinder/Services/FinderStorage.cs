@@ -2,9 +2,10 @@ namespace ProductFinder.Services
 {
 	using System;
 	using System.Collections.Generic;
-	using AtbSearchExecutor;
+	using System.IO;
+	using System.Linq;
+	using System.Reflection;
 	using Core;
-	using VarusSearchExecutor;
 
 	public interface IFinderStorage
 	{
@@ -23,24 +24,18 @@ namespace ProductFinder.Services
 		}
 
 		public void Load() {
-			var finderTypes = new List<Type> {
-				typeof(AtbFinder),
-				typeof(VarusFinder)
-			};
-			foreach (var finderType in finderTypes) {
-				_finders.Add(Activator.CreateInstance(finderType) as IProductFinder);
+			var files = Directory.GetFiles($"{Directory.GetCurrentDirectory()}\\Finders","*.dll",
+				SearchOption.TopDirectoryOnly);
+			var finderType = typeof(IProductFinder);
+			foreach (var file in files) {
+				var finderAssembly = Assembly.LoadFile(file);
+				var types = finderAssembly.GetTypes()
+					.Where(type => finderType.IsAssignableFrom(type))
+					.ToList();
+				foreach (var type in types) {
+					_finders.Add(Activator.CreateInstance(type) as IProductFinder);
+				}
 			}
-			// var files = Directory.GetFiles($"{Directory.GetCurrentDirectory()}\\Finders","*.dll",
-			// 	SearchOption.TopDirectoryOnly);
-			// var finderType = typeof(IProductFinder);
-			// foreach (var file in files) {
-			// 	var finderAssembly = Assembly.LoadFile(file);
-			// 	_finders.AddRange(
-			// 		finderAssembly.GetTypes()
-			// 		.Where(type => finderType.IsAssignableFrom(type))
-			// 		.Select(type => Activator.CreateInstance(finderType) as IProductFinder)
-			// 		.ToList());
-			// }
 		}
 
 		public void Clear() {
