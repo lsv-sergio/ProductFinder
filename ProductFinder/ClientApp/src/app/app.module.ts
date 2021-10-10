@@ -9,10 +9,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { FoundResultComponent } from './components/found-result/found-result.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatBadgeModule} from "@angular/material/badge";
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
 	declarations: [
-		AppComponent
+		AppComponent,
+  FoundResultComponent
 	],
 	imports: [
 		BrowserModule,
@@ -23,7 +30,12 @@ import {HttpClientModule} from "@angular/common/http";
 		MatIconModule,
 		FormsModule,
 		HttpClientModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		MatGridListModule,
+		MatBadgeModule,
+		MatCardModule,
+		MatButtonModule,
+		MatExpansionModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

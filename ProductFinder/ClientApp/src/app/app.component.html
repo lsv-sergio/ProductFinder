@@ -1,13 +1,10 @@
-<body>
-<!--  <app-nav-menu></app-nav-menu>-->
-<!--  <div class="container">-->
-<!--    <router-outlet></router-outlet>-->
-<!--  </div>-->
-<form class="example-form">
-	<mat-form-field class="example-full-width" appearance="fill">
-		<mat-label>Favorite food</mat-label>
+<div class="search-panel">
+	<mat-form-field class="search-input" appearance="fill">
+		<mat-label>Search for:</mat-label>
 		<input matInput placeholder="Ex. Pizza" [formControl]="searchValueControl">
 	</mat-form-field>
-	<button (click)="searchProduct()"><mat-icon [svgIcon]="'search'"></mat-icon></button>
-</form>
-</body>
+	<button (click)="searchProduct()" class="search-button"><mat-icon>search</mat-icon></button>
+</div>
+<div>
+	<app-found-result [searchResult]="searchResult"></app-found-result>
+</div>
