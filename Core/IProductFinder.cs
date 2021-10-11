@@ -6,6 +6,7 @@ namespace Core
 
 	public interface IProductFinder: IDisposable
 	{
+		public string Name { get; }
 		Task<SearchResponse> Search(string productName, CancellationToken token);
 	}
 }

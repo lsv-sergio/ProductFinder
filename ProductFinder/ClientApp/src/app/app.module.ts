@@ -15,6 +15,7 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
 	declarations: [
@@ -35,7 +36,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
 		MatBadgeModule,
 		MatCardModule,
 		MatButtonModule,
-		MatExpansionModule
+		MatExpansionModule,
+		MatSlideToggleModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
