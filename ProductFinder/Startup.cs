@@ -20,8 +20,8 @@ namespace ProductFinder
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services) {
-			services.AddSingleton<IFinderStorage, FinderStorage>();
-			services.AddHostedService<FinderLoader>();
+			services.AddSingleton<IShopsProvider, ShopsProvider>();
+			services.AddHostedService<ShopsLoader>();
 			services.AddControllers();
 			// In production, the Angular files will be served from this directory
 			services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });

@@ -9,15 +9,15 @@ namespace ProductFinder.Controllers
 	[Route("api/[controller]")]
 	public class StoresController : Controller
 	{
-		private readonly IFinderStorage _finderStorage;
+		private readonly IShopsProvider _shopsProvider;
 
-		public StoresController(IFinderStorage finderStorage) {
-			_finderStorage = finderStorage;
+		public StoresController(IShopsProvider shopsProvider) {
+			_shopsProvider = shopsProvider;
 		}
 
 		[HttpGet]
 		public Store[] Get() {
-			return _finderStorage.GetFinders().Select(x => new Store { Name =  x.Name }).ToArray();
+			return _shopsProvider.GetShops().Select(x => new Store { Name =  x.Name }).ToArray();
 		}
 
 		public class Store

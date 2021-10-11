@@ -25,13 +25,13 @@
 			var result = new List<Task<SearchResponse>>();
 			var files = Directory.GetFiles($"{Directory.GetCurrentDirectory()}\\Finders","*.dll",
 				SearchOption.TopDirectoryOnly);
-			var finderType = typeof(IProductFinder);
+			var finderType = typeof(IProductSearchExecutor);
 			CancellationTokenSource cts = new CancellationTokenSource();
 			foreach (var file in files) {
 				var finderAssembly = Assembly.LoadFile(file);
 				var finders = finderAssembly.GetTypes()
 					.Where(t => finderType.IsAssignableFrom(t)).ToList();
-				result.AddRange(finders.Select(finder => Activator.CreateInstance(finder) as IProductFinder)
+				result.AddRange(finders.Select(finder => Activator.CreateInstance(finder) as IProductSearchExecutor)
 					.Select(instance => instance?.Search(productName, cts.Token)));
 			}
 

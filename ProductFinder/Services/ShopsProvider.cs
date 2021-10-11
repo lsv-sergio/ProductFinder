@@ -7,33 +7,32 @@ namespace ProductFinder.Services
 	using System.Reflection;
 	using Core;
 
-	public interface IFinderStorage
+	public interface IShopsProvider
 	{
-		IEnumerable<IProductFinder> GetFinders();
+		IEnumerable<IProductSearchExecutor> GetShops();
 		void Load();
-
 		void Clear();
 	}
 
-	public class FinderStorage : IFinderStorage
+	public class ShopsProvider : IShopsProvider
 	{
-		private readonly List<IProductFinder> _finders = new List<IProductFinder>();
+		private readonly List<IProductSearchExecutor> _finders = new List<IProductSearchExecutor>();
 
-		public IEnumerable<IProductFinder> GetFinders() {
+		public IEnumerable<IProductSearchExecutor> GetShops() {
 			return _finders;
 		}
 
 		public void Load() {
-			var files = Directory.GetFiles($"{Directory.GetCurrentDirectory()}\\Finders","*.dll",
+			var files = Directory.GetFiles($"{Directory.GetCurrentDirectory()}\\ShopIntegration","*.dll",
 				SearchOption.TopDirectoryOnly);
-			var finderType = typeof(IProductFinder);
+			var finderType = typeof(IProductSearchExecutor);
 			foreach (var file in files) {
 				var finderAssembly = Assembly.LoadFile(file);
 				var types = finderAssembly.GetTypes()
 					.Where(type => finderType.IsAssignableFrom(type))
 					.ToList();
 				foreach (var type in types) {
-					_finders.Add(Activator.CreateInstance(type) as IProductFinder);
+					_finders.Add(Activator.CreateInstance(type) as IProductSearchExecutor);
 				}
 			}
 		}

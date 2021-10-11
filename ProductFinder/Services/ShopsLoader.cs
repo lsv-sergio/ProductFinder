@@ -5,21 +5,21 @@ namespace ProductFinder.Services
 	using System.Threading.Tasks;
 	using Microsoft.Extensions.Hosting;
 
-	public class FinderLoader: IHostedService
+	public class ShopsLoader: IHostedService
 	{
-		private readonly IFinderStorage _finderStorage;
+		private readonly IShopsProvider _shopsProvider;
 
-		public FinderLoader(IFinderStorage finderStorage) {
-			_finderStorage = finderStorage;
+		public ShopsLoader(IShopsProvider shopsProvider) {
+			_shopsProvider = shopsProvider;
 		}
 		public Task StartAsync(CancellationToken cancellationToken) {
 			return Task.Run(() => {
-				_finderStorage.Load();
+				_shopsProvider.Load();
 			}, cancellationToken);
 		}
 
 		public Task StopAsync(CancellationToken cancellationToken) {
-			return Task.Run(() =>_finderStorage.Clear(), cancellationToken);
+			return Task.Run(() =>_shopsProvider.Clear(), cancellationToken);
 		}
 	}
 }
