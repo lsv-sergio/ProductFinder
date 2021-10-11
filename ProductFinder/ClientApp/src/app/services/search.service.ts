@@ -11,7 +11,7 @@ export class SearchService {
 	constructor(private _httpClient: HttpClient) {}
 
 	public find(productName: string, searchOptions: string[]): Observable<SearchResponse[]> {
-		return this._httpClient.post<SearchResponse[]>(`api/search`, {
+		return this._httpClient.post<SearchResponse[]>('api/search', {
 			'productName': productName,
 			'searchIn': searchOptions
 		});

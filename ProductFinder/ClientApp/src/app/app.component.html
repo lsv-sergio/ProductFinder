@@ -1,24 +1,6 @@
-<div class="search-panel" [formGroup]="search">
-	<mat-form-field class="search-input" appearance="fill">
-		<mat-label>Search for:</mat-label>
-		<input matInput placeholder="Ex. Pizza" formControlName="searchValue">
-	</mat-form-field>
-	<button (click)="searchProduct()" class="search-button"><mat-icon>search</mat-icon></button>
-	<div formArrayName="options">
-		<mat-slide-toggle *ngFor="let option of searchOptionsFormArray.controls; let i = index" [formControlName]="i">{{finders[i]}}</mat-slide-toggle>
-	</div>
+<div>
+	<app-search-options (onSearchSucceed)="onSearchSucceed($event)"></app-search-options>
 </div>
 <div>
 	<app-found-result [searchResult]="searchResult"></app-found-result>
 </div>
-
-<!--<form [formGroup]="form" (ngSubmit)="submit()">-->
-<!--	<label formArrayName="orders" *ngFor="let order of searchOptions.controls; let i = index">-->
-<!--		<input type="checkbox" [formControlName]="i">-->
-<!--		{{ordersData[i].name}}-->
-<!--	</label>-->
-
-<!--	<div *ngIf="!form.valid">At least one order must be selected</div>-->
-<!--	<br>-->
-<!--	<button [disabled]="!form.valid">submit</button>-->
-<!--</form>-->

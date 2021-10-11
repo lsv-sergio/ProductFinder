@@ -16,29 +16,33 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { SearchOptionsComponent } from './components/search-options/search-options.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-  FoundResultComponent
+  FoundResultComponent,
+  SearchOptionsComponent
 	],
-	imports: [
-		BrowserModule,
-		AppRoutingModule,
-		MatFormFieldModule,
-		MatInputModule,
-		BrowserAnimationsModule,
-		MatIconModule,
-		FormsModule,
-		HttpClientModule,
-		ReactiveFormsModule,
-		MatGridListModule,
-		MatBadgeModule,
-		MatCardModule,
-		MatButtonModule,
-		MatExpansionModule,
-		MatSlideToggleModule
-	],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatFormFieldModule,
+        MatInputModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatGridListModule,
+        MatBadgeModule,
+        MatCardModule,
+        MatButtonModule,
+        MatExpansionModule,
+        MatSlideToggleModule,
+        MatProgressSpinnerModule
+    ],
 	providers: [],
 	bootstrap: [AppComponent]
 })
