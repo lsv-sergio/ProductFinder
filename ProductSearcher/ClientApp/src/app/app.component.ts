@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {SearchResponse} from "./models";
 
 @Component({
   selector: 'app-root',
@@ -8,10 +7,4 @@ import {SearchResponse} from "./models";
 })
 export class AppComponent {
 	constructor() {}
-
-	public searchResult: SearchResponse[] = [];
-
-	onSearchSucceed(result: SearchResponse[]) {
-		this.searchResult = result;
-	}
 }

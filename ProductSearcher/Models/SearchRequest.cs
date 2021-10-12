@@ -10,6 +10,7 @@ namespace ProductSearcher.Models
 
 		public string ProductName { get; set; }
 		public string[] SearchIn { get; set; }
+		public string ClientId { get; set; }
 
 		#endregion
 

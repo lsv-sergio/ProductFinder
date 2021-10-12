@@ -1,5 +1,6 @@
 namespace ProductSearcher
 {
+	using Hubs;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Hosting;
 	using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -47,6 +48,7 @@ namespace ProductSearcher
 
 			app.UseRouting();
 			app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+			app.UseEndpoints(endpoint => { endpoint.MapHub<SearchResultHub>("/hub"); });
 			app.UseSpa(spa => {
 				// To learn more about options for serving an Angular SPA from ASP.NET Core,
 				// see https://go.microsoft.com/fwlink/?linkid=864501
@@ -64,6 +66,7 @@ namespace ProductSearcher
 			services.AddControllers();
 			// In production, the Angular files will be served from this directory
 			services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
+			services.AddSignalR();
 		}
 
 		#endregion
