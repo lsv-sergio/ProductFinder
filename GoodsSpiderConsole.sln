@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtbIntegrator", "..\AtbInte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VarusIntegrator", "..\VarusIntegrator\VarusIntegrator\VarusIntegrator.csproj", "{0A5ED65E-515A-43FC-98B2-DA065777218E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFinder", "ProductFinder\ProductFinder.csproj", "{7A1C2FB8-D76E-4795-ACBF-387FE8EBB219}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductSearcher", "ProductSearcher\ProductSearcher.csproj", "{7A1C2FB8-D76E-4795-ACBF-387FE8EBB219}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
