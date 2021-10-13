@@ -8,7 +8,7 @@ namespace ProductSearcher.Controllers
 
 	[ApiController]
 	[Route("api/[controller]")]
-	public class StoresController : Controller
+	public class ShopsController : Controller
 	{
 
 		#region Fields: Private
@@ -34,7 +34,7 @@ namespace ProductSearcher.Controllers
 
 		#region Constructors: Public
 
-		public StoresController(IShopsProvider shopsProvider) {
+		public ShopsController(IShopsProvider shopsProvider) {
 			_shopsProvider = shopsProvider;
 		}
 
