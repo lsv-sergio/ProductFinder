@@ -18,32 +18,51 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {SearchOptionsComponent} from './components/search-options/search-options.component';
+import * as signalR from "@microsoft/signalr";
+import {HubConnection} from "@microsoft/signalr";
+import {CLIENT_ID_TOKEN} from "./models";
+import {SignalRWrapperService} from "./services/signalR-wrapper.service";
+
+const signalRHubConnection = new signalR.HubConnectionBuilder()
+	.withUrl('/hub')
+	.build();
 
 @NgModule({
 	declarations: [
 		AppComponent,
-  FoundResultComponent,
-  SearchOptionsComponent
+		FoundResultComponent,
+		SearchOptionsComponent
 	],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MatFormFieldModule,
-        MatInputModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        FormsModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        MatGridListModule,
-        MatBadgeModule,
-        MatCardModule,
-        MatButtonModule,
-        MatExpansionModule,
-        MatSlideToggleModule,
-        MatProgressSpinnerModule
-    ],
-	providers: [],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		MatFormFieldModule,
+		MatInputModule,
+		BrowserAnimationsModule,
+		MatIconModule,
+		FormsModule,
+		HttpClientModule,
+		ReactiveFormsModule,
+		MatGridListModule,
+		MatBadgeModule,
+		MatCardModule,
+		MatButtonModule,
+		MatExpansionModule,
+		MatSlideToggleModule,
+		MatProgressSpinnerModule
+	],
+	providers: [
+		SignalRWrapperService,
+		{
+			provide: HubConnection,
+			useFactory: () => signalRHubConnection
+		},
+		{
+			provide: CLIENT_ID_TOKEN,
+			useFactory: (signalRWrapperService: SignalRWrapperService) => signalRWrapperService,
+			deps: [SignalRWrapperService]
+		}
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

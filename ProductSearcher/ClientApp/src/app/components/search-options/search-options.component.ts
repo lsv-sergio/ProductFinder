@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Store} from "../../models";
-import {Message, MessageBusService, SearchService, SearchStartedMessageData, StoresService} from "../../services";
+import {CLIENT_ID_TOKEN, Shop} from "../../models";
+import {Message, MessageBusService, SearchService, SearchStartedMessageData, ShopsService} from "../../services";
+import {ClientIdProvider} from "../../services/signalR-wrapper.service";
 
 @Component({
 	selector: 'app-search-options',
@@ -13,15 +14,18 @@ export class SearchOptionsComponent implements OnInit {
 		return this.search.controls.options as FormArray;
 	}
 
-	constructor(private _searchService: SearchService, private _storesService: StoresService,
-				private _messageBus: MessageBusService) {
+	public stores: Shop[] = [];
+
+	constructor(private _searchService: SearchService,
+				private _storesService: ShopsService,
+				private _messageBus: MessageBusService,
+				@Inject(CLIENT_ID_TOKEN) private _clientIdProvider: ClientIdProvider) {
 		this.search = new FormGroup({
 			options: new FormArray([]),
 			searchValue: new FormControl('', [Validators.min(3), Validators.required])
 		});
 	}
 
-	public stores: Store[] = [];
 	public search: FormGroup;
 	public inProgress: boolean = false;
 
@@ -35,11 +39,12 @@ export class SearchOptionsComponent implements OnInit {
 				});
 			});
 	}
+
 	public searchProduct() {
 		const searchOptions = this.search.value.options
 			.map((checked: boolean, i: number) => checked ? this.stores[i].name : null)
 			.filter((value: string) => value);
-		this._searchService.find(this.search.get('searchValue')?.value, this._messageBus.clientId, searchOptions)
+		this._searchService.find(this.search.get('searchValue')?.value, this._clientIdProvider.clientId, searchOptions)
 			.subscribe();
 		this._messageBus.publishMessage({
 			type: 'search_started',

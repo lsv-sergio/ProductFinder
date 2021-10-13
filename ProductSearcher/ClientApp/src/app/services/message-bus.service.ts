@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from "rxjs";
 import {filter, map} from "rxjs/operators";
-import * as signalR from "@microsoft/signalr";
 import {SearchResponse} from "../models";
+import {SignalRWrapperService} from "./signalR-wrapper.service";
 
 declare type MessageType = 'search_started' | 'result_received';
 
@@ -24,27 +24,17 @@ export interface SearchResultData {
 })
 export class MessageBusService {
 
-	private hubConnection: signalR.HubConnection;
 	private _channel: Subject<Message> = new Subject<Message>()
 
-	constructor() {
-		this.hubConnection = new signalR.HubConnectionBuilder()
-			.withUrl('/hub')
-			.build();
-		this.hubConnection
-			.start()
-			.then(() => console.log('Connection started'))
-			.catch(err => console.log('Error while starting connection: ' + err));
-		this.hubConnection.on('result-received', (searchResult: SearchResponse) => {
-			this._channel.next({
-				type: "result_received",
-				payload: {result: searchResult} as SearchResultData
-			} as Message)
-		})
+	constructor(private _signalRWrapper: SignalRWrapperService) {
+		_signalRWrapper.setResultReceivedHandler(this._onResultReceivedHandler.bind(this));
 	}
 
-	public get clientId(): string {
-		return this.hubConnection.connectionId || '';
+	private _onResultReceivedHandler(searchResult: SearchResponse) {
+		this._channel.next({
+			type: "result_received",
+			payload: {result: searchResult} as SearchResultData
+		} as Message);
 	}
 
 	public publishMessage(message: Message) {
