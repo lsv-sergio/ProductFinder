@@ -47,9 +47,14 @@ namespace ProductSearcher.Controllers
 				}
 
 				Task.Run(async () => {
-					var result = await productFinder.Search(searchRequest.ProductName, cts.Token);
+					var products = await productFinder.Search(searchRequest.ProductName, cts.Token);
+					var response = new SearchResponse {
+						StoreName = productFinder.Name,
+						Products = products.OrderBy(x => x.Price)
+							.ToList()
+					};
 					await _hub.Clients.Client(searchRequest.ClientId)
-						.SendCoreAsync("result-received", new object[] { result }, cts.Token);
+						.SendCoreAsync("result-received", new object[] { response }, cts.Token);
 				}, cts.Token);
 			}
 

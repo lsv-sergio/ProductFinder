@@ -9,6 +9,7 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 	using Core;
+	using NovusSearchExecutor;
 
 	#region Class: Program
 
@@ -31,36 +32,18 @@
 				var finderAssembly = Assembly.LoadFile(file);
 				var finders = finderAssembly.GetTypes()
 					.Where(t => finderType.IsAssignableFrom(t)).ToList();
-				result.AddRange(finders.Select(finder => Activator.CreateInstance(finder) as IProductSearchExecutor)
-					.Select(instance => instance?.Search(productName, cts.Token)));
+				// result.AddRange(finders.Select(finder => Activator.CreateInstance(finder) as IProductSearchExecutor)
+					// .Select(instance => instance?.Search(productName, cts.Token)));
 			}
 
 			return result.ToArray();
 		}
 
 		private static async Task Main(string[] args) {
-			var productName = args[0];
-			var finders = LoadFinders(productName);
-			var results = await Task.WhenAll(finders);
+			var productName = "Test";
+			var executor = new NovusSearchExecutor(null);
+			//var results = await executor.Search(productName, new CancellationToken());
 			Console.OutputEncoding = Encoding.UTF8;
-			foreach (var result in results) {
-				if (result.Products == null) {
-					continue;
-				}
-				Console.BackgroundColor = ConsoleColor.DarkRed;
-				Console.WriteLine(result.StoreName);
-				Console.WriteLine();
-				Console.BackgroundColor = ConsoleColor.Black;
-				foreach (var product in result.Products) {
-					Console.WriteLine(product.Image);
-					Console.WriteLine(product.Name);
-					Console.WriteLine(product.Price);
-					Console.WriteLine(product.Link);
-				}
-				Console.WriteLine();
-			}
-
-			Console.ReadLine();
 		}
 
 		#endregion

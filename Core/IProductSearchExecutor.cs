@@ -1,12 +1,12 @@
 namespace Core
 {
-	using System;
+	using System.Collections.Generic;
 	using System.Threading;
 	using System.Threading.Tasks;
 
-	public interface IProductSearchExecutor: IDisposable
+	public interface IProductSearchExecutor
 	{
-		public string Name { get; }
-		Task<SearchResponse> Search(string productName, CancellationToken token);
+		public string Name { get; set; }
+		Task<List<Product>> Search(string productName, CancellationToken token);
 	}
 }

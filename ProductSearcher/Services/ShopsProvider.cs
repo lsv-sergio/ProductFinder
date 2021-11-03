@@ -15,15 +15,36 @@ namespace ProductSearcher.Services
 		#region Fields: Private
 
 		private readonly List<IProductSearchExecutor> _finders = new List<IProductSearchExecutor>();
+		private readonly IRequestExecutor _requestExecutor;
+
+		#endregion
+
+		#region Constructors: Public
+
+		public ShopsProvider(IRequestExecutor requestExecutor) {
+			_requestExecutor = requestExecutor;
+		}
+
+		#endregion
+
+		#region Methods: Private
+
+		private static string GetNameFromFile(string file) {
+			var fileName = file.Split("\\", StringSplitOptions.RemoveEmptyEntries)
+				.Last()
+				.Split(".")
+				.First();
+			return fileName.Replace("Integrator", "");
+		}
 
 		#endregion
 
 		#region Methods: Public
 
 		public void Clear() {
-			foreach (var finder in _finders) {
-				finder.Dispose();
-			}
+			// foreach (var finder in _finders) {
+			// 	finder.Dispose();
+			// }
 		}
 
 		public IEnumerable<IProductSearchExecutor> GetShops() {
@@ -33,15 +54,18 @@ namespace ProductSearcher.Services
 		public void Load() {
 			var files = Directory.GetFiles($"{Directory.GetCurrentDirectory()}\\ShopIntegration", "*.dll",
 				SearchOption.TopDirectoryOnly);
-			var finderType = typeof(IProductSearchExecutor);
+			var productParserType = typeof(IProductParser);
+			var searchUrlBuilderType = typeof(ISearchUrlBuilder);
 			foreach (var file in files) {
 				var finderAssembly = Assembly.LoadFile(file);
-				var types = finderAssembly.GetTypes()
-					.Where(type => finderType.IsAssignableFrom(type))
-					.ToList();
-				foreach (var type in types) {
-					_finders.Add(Activator.CreateInstance(type) as IProductSearchExecutor);
-				}
+				var allTypes = finderAssembly.GetTypes();
+				var productParser = allTypes.First(type => productParserType.IsAssignableFrom(type));
+				var searchUrlBuilder = allTypes.First(type => searchUrlBuilderType.IsAssignableFrom(type));
+				var searchExecutor = new SearchExecutor(_requestExecutor,
+					Activator.CreateInstance(productParser) as IProductParser,
+					Activator.CreateInstance(searchUrlBuilder) as ISearchUrlBuilder);
+				_finders.Add(searchExecutor);
+				searchExecutor.Name = GetNameFromFile(file);
 			}
 		}
 

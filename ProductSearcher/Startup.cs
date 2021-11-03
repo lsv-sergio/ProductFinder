@@ -1,5 +1,6 @@
 namespace ProductSearcher
 {
+	using Core;
 	using Hubs;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Hosting;
@@ -62,6 +63,7 @@ namespace ProductSearcher
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services) {
 			services.AddSingleton<IShopsProvider, ShopsProvider>();
+			services.AddTransient<IRequestExecutor, RequestExecutor>();
 			services.AddHostedService<ShopsLoader>();
 			services.AddControllers();
 			// In production, the Angular files will be served from this directory
