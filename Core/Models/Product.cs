@@ -1,5 +1,7 @@
-﻿namespace Core
+﻿namespace Core.Models
 {
+
+	#region Class: ${Name}
 
 	public class Product
 	{
@@ -19,5 +21,7 @@
 		#endregion
 
 	}
+
+	#endregion
 
 }

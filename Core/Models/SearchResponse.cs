@@ -1,6 +1,8 @@
-namespace Core
+namespace Core.Models
 {
 	using System.Collections.Generic;
+
+	#region Class: ${Name}
 
 	public class SearchResponse
 	{
@@ -13,4 +15,7 @@ namespace Core
 		#endregion
 
 	}
+
+	#endregion
+
 }

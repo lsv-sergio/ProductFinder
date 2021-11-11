@@ -1,8 +1,10 @@
-namespace Core
+namespace Core.Services
 {
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
+	using Interfaces;
+	using Models;
 	using Newtonsoft.Json.Linq;
 
 	#region Class: ${Name}

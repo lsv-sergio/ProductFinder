@@ -4,7 +4,8 @@ namespace ProductSearcher.Controllers
 	using System.Linq;
 	using System.Threading;
 	using System.Threading.Tasks;
-	using Core;
+	using Core.Interfaces;
+	using Core.Models;
 	using Hubs;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.AspNetCore.SignalR;

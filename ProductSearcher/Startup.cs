@@ -1,6 +1,7 @@
 namespace ProductSearcher
 {
-	using Core;
+	using Core.Interfaces;
+	using Core.Services;
 	using Hubs;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Hosting;
@@ -64,7 +65,8 @@ namespace ProductSearcher
 		public void ConfigureServices(IServiceCollection services) {
 			services.AddSingleton<IShopsProvider, ShopsProvider>();
 			services.AddTransient<IRequestExecutor, RequestExecutor>();
-			services.AddHostedService<ShopsLoader>();
+			services.AddTransient<IProductSearchExecutorFactory, ProductSearchExecutorFactory>();
+			// services.AddHostedService<ShopsLoader>();
 			services.AddControllers();
 			// In production, the Angular files will be served from this directory
 			services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });

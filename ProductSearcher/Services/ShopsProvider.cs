@@ -5,7 +5,7 @@ namespace ProductSearcher.Services
 	using System.IO;
 	using System.Linq;
 	using System.Reflection;
-	using Core;
+	using Core.Interfaces;
 
 	#region Class: ${Name}
 
@@ -14,15 +14,17 @@ namespace ProductSearcher.Services
 
 		#region Fields: Private
 
-		private readonly List<IProductSearchExecutor> _finders = new List<IProductSearchExecutor>();
-		private readonly IRequestExecutor _requestExecutor;
+		private readonly IProductSearchExecutorFactory _productSearchExecutorFactory;
+		private List<IProductSearchExecutor> _finders;
 
 		#endregion
 
+		private static readonly object Lock = new object();
+
 		#region Constructors: Public
 
-		public ShopsProvider(IRequestExecutor requestExecutor) {
-			_requestExecutor = requestExecutor;
+		public ShopsProvider(IProductSearchExecutorFactory productSearchExecutorFactoryFactory) {
+			_productSearchExecutorFactory = productSearchExecutorFactoryFactory;
 		}
 
 		#endregion
@@ -37,23 +39,10 @@ namespace ProductSearcher.Services
 			return fileName.Replace("Integrator", "");
 		}
 
-		#endregion
-
-		#region Methods: Public
-
-		public void Clear() {
-			// foreach (var finder in _finders) {
-			// 	finder.Dispose();
-			// }
-		}
-
-		public IEnumerable<IProductSearchExecutor> GetShops() {
-			return _finders;
-		}
-
-		public void Load() {
+		private List<IProductSearchExecutor> Load() {
 			var files = Directory.GetFiles($"{Directory.GetCurrentDirectory()}\\ShopIntegration", "*.dll",
 				SearchOption.TopDirectoryOnly);
+			var finders = new List<IProductSearchExecutor>();
 			var productParserType = typeof(IProductParser);
 			var searchUrlBuilderType = typeof(ISearchUrlBuilder);
 			foreach (var file in files) {
@@ -61,12 +50,33 @@ namespace ProductSearcher.Services
 				var allTypes = finderAssembly.GetTypes();
 				var productParser = allTypes.First(type => productParserType.IsAssignableFrom(type));
 				var searchUrlBuilder = allTypes.First(type => searchUrlBuilderType.IsAssignableFrom(type));
-				var searchExecutor = new SearchExecutor(_requestExecutor,
+				var searchExecutor = _productSearchExecutorFactory.Create(
 					Activator.CreateInstance(productParser) as IProductParser,
 					Activator.CreateInstance(searchUrlBuilder) as ISearchUrlBuilder);
-				_finders.Add(searchExecutor);
 				searchExecutor.Name = GetNameFromFile(file);
+				finders.Add(searchExecutor);
 			}
+
+			return finders;
+		}
+
+		#endregion
+
+		#region Methods: Public
+
+		public IEnumerable<IProductSearchExecutor> GetShops() {
+			if (_finders == null) {
+				lock (Lock) {
+					if (_finders != null) {
+						return _finders;
+					}
+
+					_finders = Load();
+					return _finders;
+				}
+			}
+
+			return _finders;
 		}
 
 		#endregion
@@ -78,7 +88,5 @@ namespace ProductSearcher.Services
 	public interface IShopsProvider
 	{
 		IEnumerable<IProductSearchExecutor> GetShops();
-		void Load();
-		void Clear();
 	}
 }

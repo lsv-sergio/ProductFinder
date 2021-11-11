@@ -1,4 +1,4 @@
-namespace Core
+namespace Core.Interfaces
 {
 	using System.Threading;
 	using System.Threading.Tasks;
