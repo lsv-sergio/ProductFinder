@@ -28,4 +28,5 @@ jobs:
           dotnet-version: | 
             3.1.x
             5.0.x
-      - run: dotnet build GoodsSpiderConsole
+      #- run: dotnet build GoodsSpiderConsole
+      - run: dotnet test Core.UnitTests.csproj
