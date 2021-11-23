@@ -1,0 +1,29 @@
+<div class="found-result-panel" *ngIf="hasResults">
+	<button mat-button (click)="openAll()">Expand All</button>
+	<button mat-button (click)="closeAll()">Collapse All</button>
+</div>
+<mat-accordion class="example-headers-align" multi>
+	<mat-expansion-panel *ngFor="let result of searchResult">
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				{{result.storeName}}
+			</mat-panel-title>
+			<mat-panel-description>
+				{{result.products.length}}
+			</mat-panel-description>
+		</mat-expansion-panel-header>
+		<mat-grid-list cols="2" rowHeight="150px">
+			<mat-grid-tile *ngFor="let product of result.products" class="found-product">
+				<mat-card class="example-card">
+					<mat-card-title-group>
+						<mat-card-title>{{product.name}}</mat-card-title>
+						<img mat-card-md-image [src]="product.image" [alt]="product.id">
+					</mat-card-title-group>
+					<mat-card-content>
+						{{product.price}}
+					</mat-card-content>
+				</mat-card>
+			</mat-grid-tile>
+		</mat-grid-list>
+	</mat-expansion-panel>
+</mat-accordion>
