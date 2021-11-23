@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductSearcher", "ProductSearcher\ProductSearcher.csproj", "{7A1C2FB8-D76E-4795-ACBF-387FE8EBB219}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.UnitTests", "..\Core.UnitTests\Core.UnitTests.csproj", "{34AFC9DD-7C17-4271-8063-A9FBD25C636F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +18,5 @@ Global
 		{7A1C2FB8-D76E-4795-ACBF-387FE8EBB219}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A1C2FB8-D76E-4795-ACBF-387FE8EBB219}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A1C2FB8-D76E-4795-ACBF-387FE8EBB219}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34AFC9DD-7C17-4271-8063-A9FBD25C636F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34AFC9DD-7C17-4271-8063-A9FBD25C636F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34AFC9DD-7C17-4271-8063-A9FBD25C636F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 EndGlobal
