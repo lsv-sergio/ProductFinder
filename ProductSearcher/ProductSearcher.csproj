@@ -20,11 +20,20 @@
 
     <ItemGroup>
         <!-- Don't publish the SPA source files, but do show them in the project files list -->
-        <Content Remove="$(SpaRoot)**" />
-        <None Remove="$(SpaRoot)**" />
-        <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+        <Content Remove="$(SpaRoot)**"/>
+        <None Remove="$(SpaRoot)**"/>
+        <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**"/>
         <None Update="Finders\placeholder.txt">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="ShopIntegration\AtbIntegrator.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="ShopIntegration\NovusIntegrator.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="ShopIntegration\VarusIntegrator.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>
 
