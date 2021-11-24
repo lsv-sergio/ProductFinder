@@ -1,4 +1,4 @@
-name: dotnet package
+name: Product finder app
 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
