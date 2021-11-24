@@ -8,6 +8,21 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../ProductFinder.Core.UnitTests/ProductFinder.Core.UnitTests/BaseProductParserTestCases.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../ProductFinder.Core.UnitTests/ProductFinder.Core.UnitTests/RequestExecutorTestCases.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../ProductFinder.Core.UnitTests/ProductFinder.Core.UnitTests/SearchExecutorTestCases.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/ProductFinder.Core/Interfaces/IProductParser.cs">
           <value>
             <set />
