@@ -1,11 +1,11 @@
-name: dotnet package
+name: Check core projects 
 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [ core ]
   pull_request:
-    branches: [ main ]
+    branches: [ core ]
 
 jobs:
   build:
