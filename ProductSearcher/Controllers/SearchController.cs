@@ -4,12 +4,12 @@ namespace ProductSearcher.Controllers
 	using System.Linq;
 	using System.Threading;
 	using System.Threading.Tasks;
-	using Core.Interfaces;
-	using Core.Models;
 	using Hubs;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.AspNetCore.SignalR;
 	using Models;
+	using ProductFinder.Core.Interfaces;
+	using ProductFinder.Core.Models;
 	using Services;
 
 	#region Class: ${Name}

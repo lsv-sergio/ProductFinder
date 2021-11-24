@@ -1,6 +1,6 @@
 namespace ProductSearcher.Services
 {
-	using Core.Interfaces;
+	using ProductFinder.Core.Interfaces;
 
 	public interface IProductSearchExecutorFactory
 	{

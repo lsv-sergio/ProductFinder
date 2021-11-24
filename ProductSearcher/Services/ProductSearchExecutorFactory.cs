@@ -1,7 +1,7 @@
 namespace ProductSearcher.Services
 {
-	using Core.Interfaces;
-	using Core.Services;
+	using ProductFinder.Core.Interfaces;
+	using ProductFinder.Core.Services;
 
 	#region Class: ${Name}
 

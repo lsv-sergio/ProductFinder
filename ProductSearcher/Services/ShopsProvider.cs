@@ -5,7 +5,7 @@ namespace ProductSearcher.Services
 	using System.IO;
 	using System.Linq;
 	using System.Reflection;
-	using Core.Interfaces;
+	using ProductFinder.Core.Interfaces;
 
 	#region Class: ${Name}
 

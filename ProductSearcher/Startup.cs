@@ -1,7 +1,5 @@
 namespace ProductSearcher
 {
-	using Core.Interfaces;
-	using Core.Services;
 	using Hubs;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Hosting;
@@ -9,6 +7,8 @@ namespace ProductSearcher
 	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
+	using ProductFinder.Core.Interfaces;
+	using ProductFinder.Core.Services;
 	using Services;
 
 	#region Class: ${Name}

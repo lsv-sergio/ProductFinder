@@ -38,16 +38,18 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Core\Core.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
         <Folder Include="ClientApp\src\app\components"/>
     </ItemGroup>
 
     <ItemGroup>
         <_ContentIncludedByDefault Remove="Pages\Error.cshtml"/>
         <_ContentIncludedByDefault Remove="Pages\_ViewImports.cshtml"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="ProductFinder.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\..\ProductFinder.Core\ProductFinder.Core\bin\Release\net5.0\ProductFinder.Core.dll</HintPath>
+        </Reference>
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

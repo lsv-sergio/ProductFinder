@@ -1,18 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{133B5640-0C0B-42C5-BB6A-FE986C2777DB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtbIntegrator", "..\AtbIntegrator\AtbIntegrator\AtbIntegrator.csproj", "{7209BFD2-EC04-4A08-8B4A-CC83118F275A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VarusIntegrator", "..\VarusIntegrator\VarusIntegrator\VarusIntegrator.csproj", "{0A5ED65E-515A-43FC-98B2-DA065777218E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductSearcher", "ProductSearcher\ProductSearcher.csproj", "{7A1C2FB8-D76E-4795-ACBF-387FE8EBB219}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovusIntegrator", "..\NovusIntegrator\NovusIntegrator.csproj", "{4AC98C7B-C157-4722-A1DF-EBA348C7B020}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovusIntegrator.UnitTests", "..\NovusIntegrator.UnitTests\NovusIntegrator.UnitTests.csproj", "{0E6ECD30-B520-4281-BE98-2C1564F745AD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.UnitTests", "..\Core.UnitTests\Core.UnitTests.csproj", "{34AFC9DD-7C17-4271-8063-A9FBD25C636F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,28 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{133B5640-0C0B-42C5-BB6A-FE986C2777DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{133B5640-0C0B-42C5-BB6A-FE986C2777DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{133B5640-0C0B-42C5-BB6A-FE986C2777DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{133B5640-0C0B-42C5-BB6A-FE986C2777DB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7209BFD2-EC04-4A08-8B4A-CC83118F275A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7209BFD2-EC04-4A08-8B4A-CC83118F275A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7209BFD2-EC04-4A08-8B4A-CC83118F275A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A5ED65E-515A-43FC-98B2-DA065777218E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A5ED65E-515A-43FC-98B2-DA065777218E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A5ED65E-515A-43FC-98B2-DA065777218E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A1C2FB8-D76E-4795-ACBF-387FE8EBB219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7A1C2FB8-D76E-4795-ACBF-387FE8EBB219}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A1C2FB8-D76E-4795-ACBF-387FE8EBB219}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A1C2FB8-D76E-4795-ACBF-387FE8EBB219}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4AC98C7B-C157-4722-A1DF-EBA348C7B020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AC98C7B-C157-4722-A1DF-EBA348C7B020}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4AC98C7B-C157-4722-A1DF-EBA348C7B020}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E6ECD30-B520-4281-BE98-2C1564F745AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E6ECD30-B520-4281-BE98-2C1564F745AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E6ECD30-B520-4281-BE98-2C1564F745AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34AFC9DD-7C17-4271-8063-A9FBD25C636F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34AFC9DD-7C17-4271-8063-A9FBD25C636F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34AFC9DD-7C17-4271-8063-A9FBD25C636F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 EndGlobal
