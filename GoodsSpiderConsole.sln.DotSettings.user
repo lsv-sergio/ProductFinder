@@ -40,4 +40,9 @@
     &lt;TestId&gt;NUnit3x::34AFC9DD-7C17-4271-8063-A9FBD25C636F::net5.0::Core.UnitTests.RequestExecutorTestCases.SendRequest_ShouldSendHttpRequest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::0E6ECD30-B520-4281-BE98-2C1564F745AD::net5.0::NovusIntegrator.UnitTests.NovusSearchUrlBuilderTestCases&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+&lt;/SessionState&gt;</s:String>
+	
+	
+	
+	
+	</wpf:ResourceDictionary>
