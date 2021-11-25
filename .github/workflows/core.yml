@@ -1,7 +1,6 @@
 name: Check core projects
 
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ core ]
   pull_request:
@@ -9,13 +8,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        dotnet-version: ['5.0.x']
+    uses: lsv-sergio/ProductFinder/.github/workflows/build-core.yml@core
 
+  test:
+    runs-on: ubuntu-latest
     steps:
-      - name: Build
-        uses: lsv-sergio/ProductFinder/.github/workflows/build-core@core
       - name: Test
         run: dotnet test --no-restore --verbosity normal
