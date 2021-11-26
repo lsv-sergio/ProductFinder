@@ -19,12 +19,12 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build --configuration Release --no-restore --output Core-Release
+        run: dotnet build --configuration Release --no-restore --output core-release
       - name: Test
-        run: dotnet test --no-restore --verbosity normal
+        run: dotnet test --no-restore --no-restore --verbosity minimal
       - name: Publish artifacts
         uses: actions/upload-artifact@v2
         with:
           name: core-bin
-          path: ./Core-Release/*.dll
+          path: ./core-release/*.dll
           retention-days: 1
