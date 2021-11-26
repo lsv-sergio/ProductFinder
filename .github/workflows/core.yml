@@ -14,6 +14,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: core-bin
       - name: Test
-        run: ls ./Core-Release
+        run: ls .
 #        run: dotnet test --no-restore --verbosity normal

@@ -22,5 +22,9 @@ jobs:
         run: dotnet build --configuration Release --no-restore --output Core-Release
       - name: Test
         run: dotnet test --no-restore --verbosity normal
-#      - name: Publish artifacts
-#        run: ls ./Core-Release
+      - name: Publish artifacts
+       uses: actions/upload-artifact@v2
+          with:
+            name: core-bin
+            path: ./Core-Release
+            retention-days: 1
