@@ -5,6 +5,9 @@ on:
   push:
     branches: [novus-integration]
 jobs:
+  build-core:
+    build:
+      uses: lsv-sergio/ProductFinder/.github/workflows/build-core.yml@core
   build:
     runs-on: ubuntu-latest
     strategy:
