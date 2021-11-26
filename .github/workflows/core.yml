@@ -15,4 +15,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: dotnet test --no-restore --verbosity normal
+        run: ls ./Core-Release
+#        run: dotnet test --no-restore --verbosity normal

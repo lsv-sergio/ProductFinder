@@ -20,3 +20,7 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration Release --no-restore --output Core-Release
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal
+#      - name: Publish artifacts
+#        run: ls ./Core-Release
