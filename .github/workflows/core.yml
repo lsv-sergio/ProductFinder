@@ -11,6 +11,7 @@ jobs:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-core.yml@core
 
   test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Test
