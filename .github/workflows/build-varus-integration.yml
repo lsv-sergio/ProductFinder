@@ -1,0 +1,15 @@
+name: Build varus integration project
+
+on:
+  workflow_call:
+  push:
+    branches: [varus-integration]
+jobs:
+  build-core:
+    uses: lsv-sergio/ProductFinder/.github/workflows/build-core.yml@core
+  build:
+    uses: lsv-sergio/ProductFinder/.github/workflows/build-integration-project.yml@main
+    needs: build-core
+    with:
+      branch: varus-integration
+      outputDirName: varus-integration-release
