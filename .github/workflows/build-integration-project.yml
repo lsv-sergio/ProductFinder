@@ -1,0 +1,53 @@
+name: Build integration project action
+
+on:
+  workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
+      outputDirName:
+        required: true
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['5.0.x']
+
+    steps:
+      - name: Dowload core
+        uses: actions/checkout@v2
+        with:
+          ref: ${{inputs.branch}}
+
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Create folder for ProductFinder.Core
+        run: mkdir ProductFinder.Core
+
+      - name: Download ProductFinder.Core
+        uses: actions/download-artifact@v2
+        with:
+          name: core-bin
+          path: ./ProductFinder.Core
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore --output ${{inputs.outputDirName}}
+
+      - name: Test
+        run: dotnet test --no-restore --no-restore --verbosity minimal
+
+      - name: Publish artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{inputs.outputDirName}}
+          path: ./${{inputs.outputDirName}}/*.dll
+          retention-days: 1
