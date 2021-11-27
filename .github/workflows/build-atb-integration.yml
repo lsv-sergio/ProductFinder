@@ -5,6 +5,8 @@ on:
   push:
     branches: [atb-integration]
 jobs:
+  build-core:
+    uses: lsv-sergio/ProductFinder/.github/workflows/build-core.yml@core
   build:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-integration-project.yml@main
     with:
