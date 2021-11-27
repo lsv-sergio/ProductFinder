@@ -8,37 +8,8 @@ jobs:
   build-core:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-core.yml@core
   build:
-    runs-on: ubuntu-latest
+    uses: lsv-sergio/ProductFinder/.github/workflows/build-integration-project.yml@main
     needs: build-core
-    strategy:
-      matrix:
-        dotnet-version: ['5.0.x']
-
-    steps:
-      - name: Dowload novus-integration
-        uses: actions/checkout@v2
-        with:
-          ref: novus-integration
-      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v1.7.2
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
-      - name: Create folder for ProductFinder.Core
-        run: mkdir ProductFinder.Core
-      - name: Download ProductFinder.Core
-        uses: actions/download-artifact@v2
-        with:
-          name: core-bin
-          path: ./ProductFinder.Core
-      - name: Install dependencies
-        run: dotnet restore
-      - name: Build
-        run: dotnet build --configuration Release --no-restore --output novus-integration-release
-      - name: Test
-        run: dotnet test --no-restore --no-restore --verbosity minimal
-      - name: Publish artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: novus-integration-release
-          path: ./novus-integration-release/*.dll
-          retention-days: 1
+    with:
+        branch: novus-integration
+        outputDirName: novus-integration-release
