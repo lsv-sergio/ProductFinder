@@ -15,7 +15,10 @@ jobs:
         dotnet-version: ['5.0.x']
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Dowload novus-integration
+        uses: actions/checkout@v2
+        with:
+          ref: novus-integration
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v1.7.2
         with:
@@ -36,6 +39,6 @@ jobs:
       - name: Publish artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: core-bin
+          name: novus-integration-release
           path: ./novus-integration-release/*.dll
           retention-days: 1
