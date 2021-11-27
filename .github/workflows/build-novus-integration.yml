@@ -9,6 +9,7 @@ jobs:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-core.yml@core
   build:
     runs-on: ubuntu-latest
+    needs: build-core
     strategy:
       matrix:
         dotnet-version: ['5.0.x']
