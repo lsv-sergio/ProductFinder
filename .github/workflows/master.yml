@@ -70,7 +70,7 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build --configuration Release --no-restore -o product-searcher-release
+        run: dotnet build --configuration Release --no-restore -v diag -o product-searcher-release
       - name: Test
         run: dotnet test --no-restore --verbosity normal
       - name: Publish artifacts
