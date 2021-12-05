@@ -48,9 +48,11 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: build-angular-app
-          path: dist
+          path: ClietnApp/dist
+
+
   build:
-    needs: [build-core, build-novus-integration, build-varus-integration, build-atb-integration]
+    needs: [build-core, build-novus-integration, build-varus-integration, build-atb-integration, build-angular-app]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -84,8 +86,6 @@ jobs:
         with:
           name: atb-integration-release
           path: ./ShopIntegration
-      - name: Install node
-        run:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
