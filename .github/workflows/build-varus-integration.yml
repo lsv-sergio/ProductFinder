@@ -13,3 +13,4 @@ jobs:
     with:
       branch: varus-integration
       outputDirName: varus-integration-release
+      sourcePath: VarusIntegration
