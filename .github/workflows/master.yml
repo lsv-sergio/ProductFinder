@@ -17,6 +17,7 @@ jobs:
     with:
       branch: novus-integration
       outputDirName: novus-integration-release
+      sourcePath: NovusIntegration
 
   build-varus-integration:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-integration-project.yml@main
@@ -24,6 +25,7 @@ jobs:
     with:
       branch: varus-integration
       outputDirName: varus-integration-release
+      sourcePath: VarusIntegration
 
   build-atb-integration:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-integration-project.yml@main
@@ -31,6 +33,7 @@ jobs:
     with:
       branch: atb-integration
       outputDirName: atb-integration-release
+      sourcePath: AtbIntegration
 
   build:
     needs: [build-core, build-novus-integration, build-varus-integration, build-atb-integration]

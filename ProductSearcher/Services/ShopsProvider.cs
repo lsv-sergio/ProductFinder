@@ -48,8 +48,12 @@ namespace ProductSearcher.Services
 			foreach (var file in files) {
 				var finderAssembly = Assembly.LoadFile(file);
 				var allTypes = finderAssembly.GetTypes();
-				var productParser = allTypes.First(type => productParserType.IsAssignableFrom(type));
-				var searchUrlBuilder = allTypes.First(type => searchUrlBuilderType.IsAssignableFrom(type));
+				var productParser = allTypes.FirstOrDefault(type => productParserType.IsAssignableFrom(type));
+				var searchUrlBuilder = allTypes.FirstOrDefault(type => searchUrlBuilderType.IsAssignableFrom(type));
+				if (productParser is null || searchUrlBuilder is null) {
+					continue;
+				}
+
 				var searchExecutor = _productSearchExecutorFactory.Create(
 					Activator.CreateInstance(productParser) as IProductParser,
 					Activator.CreateInstance(searchUrlBuilder) as ISearchUrlBuilder);
