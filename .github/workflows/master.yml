@@ -35,6 +35,20 @@ jobs:
       outputDirName: atb-integration-release
       sourcePath: AtbIntegration
 
+  build-angular-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install node
+        uses: actions/setup-node@v2
+      - name: Install NPM Modules
+        run: npm ci
+      - name: Build Project
+        run: npm run build
+      - name: Archive build
+        uses: actions/upload-artifact@v1
+        with:
+          name: build-angular-app
+          path: dist
   build:
     needs: [build-core, build-novus-integration, build-varus-integration, build-atb-integration]
     runs-on: ubuntu-latest
@@ -70,6 +84,8 @@ jobs:
         with:
           name: atb-integration-release
           path: ./ShopIntegration
+      - name: Install node
+        run:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
