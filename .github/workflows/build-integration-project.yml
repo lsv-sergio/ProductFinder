@@ -27,9 +27,6 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
 
-      - name: Create folder for ProductFinder.Core
-        run: mkdir ProductFinder.Core
-
       - name: Download ProductFinder.Core
         uses: actions/download-artifact@v2
         with:
