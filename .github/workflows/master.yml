@@ -41,11 +41,11 @@ jobs:
       - name: Install node
         uses: actions/setup-node@v2
       - name: Install NPM Modules
-        run: npm ci
-        working-directory: ClientApp
+        run: npm install
+        working-directory: ProductSearcher/ClientApp
       - name: Build Project
         run: npm run build
-        working-directory: ClientApp
+        working-directory: ProductSearcher/ClientApp
       - name: Archive build
         uses: actions/upload-artifact@v1
         with:
