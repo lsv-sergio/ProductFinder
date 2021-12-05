@@ -34,7 +34,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: core-bin
-          path: ./ProductFinder.Core
+          path: .
 
       - name: Install dependencies
         run: dotnet restore
