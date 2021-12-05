@@ -13,3 +13,4 @@ jobs:
     with:
         branch: novus-integration
         outputDirName: novus-integration-release
+        sourcePath: NovusIntegration
