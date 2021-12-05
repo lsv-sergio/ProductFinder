@@ -68,7 +68,7 @@ namespace AtbIntegration
 							Image = atbProduct.Picture
 						}
 					};
-			} catch(ArgumentException ex) {
+			} catch {
 				return null;
 			}
 		}

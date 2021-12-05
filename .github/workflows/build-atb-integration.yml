@@ -13,3 +13,4 @@ jobs:
     with:
       branch: atb-integration
       outputDirName: atb-integration-release
+      sourcePath: AtbIntegration
