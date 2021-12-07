@@ -53,7 +53,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: build-angular-app
-          path: dist
+          path: ProductSearcher/ClientApp/dist
 
 
   build:
