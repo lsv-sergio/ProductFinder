@@ -37,9 +37,6 @@ jobs:
 
   build-angular-app:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ClientApp
     steps:
       - uses: actions/checkout@v2
         with:
