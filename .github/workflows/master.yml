@@ -93,9 +93,9 @@ jobs:
           path: ./ShopIntegration
       - name: Download angualar app
         uses: actions/download-artifact@v2
-          with:
-            name: build-angular-app
-            path: ./ClientApp
+        with:
+          name: build-angular-app
+          path: ./ClientApp
       - name: Install dependencies
         run: dotnet restore
       - name: Build
