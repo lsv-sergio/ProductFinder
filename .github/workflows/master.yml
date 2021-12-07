@@ -47,6 +47,7 @@ jobs:
         uses: actions/setup-node@v2
       - name: Install NPM Modules
         run: npm install
+        working-directory: ${{env.working-directory}}
       - name: Build Project
         run: npm run build
       - name: Archive build
