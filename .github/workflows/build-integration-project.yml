@@ -49,5 +49,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{inputs.outputDirName}}
-          path: ./${{inputs.outputDirName}}/*.dll
+          path: ./${{inputs.outputDirName}}
           retention-days: 1
