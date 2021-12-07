@@ -91,17 +91,17 @@ jobs:
         with:
           name: atb-integration-release
           path: ./ShopIntegration
-      - name: Download angualar app
-        uses: actions/download-artifact@v2
-        with:
-          name: build-angular-app
-          path: ./ClientApp
       - name: Install dependencies
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration Release --no-restore -v n -o product-searcher-release
       - name: Test
         run: dotnet test --no-restore --verbosity normal
+      - name: Download angualar app
+        uses: actions/download-artifact@v2
+        with:
+          name: build-angular-app
+          path: ./product-searcher-release/ClientApp
       - name: Publish artifacts
         uses: actions/upload-artifact@v2
         with:
