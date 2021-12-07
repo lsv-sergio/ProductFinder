@@ -37,14 +37,10 @@ jobs:
 
   build-angular-app:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./ClientApp
     steps:
       - uses: actions/checkout@v2
         with:
           path: ClientApp
-      - name:
       - name: Install node
         uses: actions/setup-node@v2
       - name: Install NPM Modules
