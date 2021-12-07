@@ -38,18 +38,19 @@ jobs:
   build-angular-app:
     runs-on: ubuntu-latest
     env:
-      working-directory: ClientApp
+      working-directory: ProductSearcher/ClientApp
     steps:
       - uses: actions/checkout@v2
-        with:
-          path: ProductSearcher/ClientApp
       - name: Install node
         uses: actions/setup-node@v2
+      - name: Change working-dir
+        run: cd ProductSearcher/ClientApp
       - name: Install NPM Modules
         run: npm install
-       # working-directory: ${{env.working-directory}}
+        #working-directory: ${{env.working-directory}}
       - name: Build Project
         run: npm run build
+        #working-directory: ${{env.working-directory}}
       - name: Archive build
         uses: actions/upload-artifact@v1
         with:
