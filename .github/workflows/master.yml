@@ -42,12 +42,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          path: ClientApp
+          path: ProductSearcher/ClientApp
       - name: Install node
         uses: actions/setup-node@v2
       - name: Install NPM Modules
         run: npm install
-        working-directory: ${{env.working-directory}}
+       # working-directory: ${{env.working-directory}}
       - name: Build Project
         run: npm run build
       - name: Archive build
