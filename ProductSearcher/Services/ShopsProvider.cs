@@ -36,12 +36,12 @@ namespace ProductSearcher.Services
 				.Last()
 				.Split(".")
 				.First();
-			return fileName.Replace("Integrator", "");
+			return fileName.Replace("Integration", "");
 		}
 
 		private List<IProductSearchExecutor> Load() {
-			var files = Directory.GetFiles($"{Directory.GetCurrentDirectory()}\\ShopIntegration", "*.dll",
-				SearchOption.TopDirectoryOnly);
+			var files = Directory.GetFiles($"{Directory.GetCurrentDirectory()}\\ShopIntegration", "*Integration.dll",
+				SearchOption.AllDirectories);
 			var finders = new List<IProductSearchExecutor>();
 			var productParserType = typeof(IProductParser);
 			var searchUrlBuilderType = typeof(ISearchUrlBuilder);

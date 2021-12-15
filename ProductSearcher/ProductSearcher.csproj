@@ -26,13 +26,16 @@
         <None Update="Finders\placeholder.txt">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Update="ShopIntegration\AtbIntegrator.dll">
+        <None Update="ShopIntegration\AtbIntegration\AtbIntegrator.dll">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Update="ShopIntegration\NovusIntegrator.dll">
+        <None Update="ShopIntegration\AtbIntegration\ProductFinder.Core.dll">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Update="ShopIntegration\VarusIntegrator.dll">
+        <None Update="ShopIntegration\Varus\VarusIntegrator.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="ShopIntegration\Novus\NovusIntegrator.dll">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>

@@ -230,3 +230,10 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 /ProductFinder.Core/ProductFinder.Core.dll
+/ShopIntegration/AtbIntegration/ProductFinder.Core.dll
+/ShopIntegration/Atb/AtbIntegration.dll
+/ShopIntegration/Atb/ProductFinder.Core.dll
+/ShopIntegration/Novus/NovusIntegration.dll
+/ShopIntegration/Novus/ProductFinder.Core.dll
+/ShopIntegration/Varus/ProductFinder.Core.dll
+/ShopIntegration/Varus/VarusIntegration.dll
