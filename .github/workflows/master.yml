@@ -57,7 +57,8 @@ jobs:
 
 
   build:
-    needs: [build-core, build-novus-integration, build-varus-integration, build-atb-integration, build-angular-app]
+    needs: [build-core, build-novus-integration, build-varus-integration,
+            build-atb-integration, build-angular-app]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -76,26 +77,28 @@ jobs:
         with:
           name: core-bin
           path: ./ProductFinder.Core
-      - name: Download ProductFinder.Core
-        uses: actions/download-artifact@v2
+
+      - name: Download novus integration artifact
+        uses: lsv-sergio/ProductFinder/.github/workflows/download-integration-artifact.yml@main
         with:
-          name: core-bin
-          path: ./ShopIntegration
-      - name: Download novus integration
-        uses: actions/download-artifact@v2
+          integrationName: novus
+          artifactName: novus-integration-release
+          targetDirName: NovusIntegration
+
+      - name: Download varus integration artifact
+        uses: lsv-sergio/ProductFinder/.github/workflows/download-integration-artifact.yml@main
         with:
-          name: novus-integration-release
-          path: ./ShopIntegration
-      - name: Download varus integration
-        uses: actions/download-artifact@v2
+          integrationName: varus
+          artifactName: varus-integration-release
+          targetDirName: VarusIntegration
+
+      - name: Download atb integration artifact
+        uses: lsv-sergio/ProductFinder/.github/workflows/download-integration-artifact.yml@main
         with:
-          name: varus-integration-release
-          path: ./ShopIntegration
-      - name: Download atb integration
-        uses: actions/download-artifact@v2
-        with:
-          name: atb-integration-release
-          path: ./ShopIntegration
+          integrationName: atb
+          artifactName: atb-integration-release
+          targetDirName: AtbIntegration
+
       - name: Install dependencies
         run: dotnet restore
       - name: Build
