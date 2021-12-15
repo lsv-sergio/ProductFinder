@@ -40,10 +40,13 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore --output ${{inputs.outputDirName}}
-
+        run: dotnet build --configuration Release --no-restore
+        
       - name: Test
         run: dotnet test --no-restore --no-restore --verbosity minimal
+
+      - name: Publish
+        run: dotnet build --configuration Release --no-restore --output ${{inputs.outputDirName}}
 
       - name: Publish artifacts
         uses: actions/upload-artifact@v2
