@@ -1,0 +1,27 @@
+name: Download integration artifact
+
+on:
+  workflow_call:
+    inputs:
+      integrationName:
+        required: true
+        type: string
+      artifactName:
+        required: true
+        type: string
+      targetDirName:
+        required: true
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['5.0.x']
+
+    steps:
+      - name: Download ${{inputs.integrationName}} integration
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{inputs.artifactName}}
+          path: ./ShopIntegration/${{inputs.targetDirName}}
