@@ -76,26 +76,21 @@ jobs:
         with:
           name: core-bin
           path: ./ProductFinder.Core
-      - name: Download ProductFinder.Core
-        uses: actions/download-artifact@v2
-        with:
-          name: core-bin
-          path: ./ShopIntegration
       - name: Download novus integration
         uses: actions/download-artifact@v2
         with:
           name: novus-integration-release
-          path: ./ShopIntegration
+          path: ./ShopIntegration/NovusIntegration
       - name: Download varus integration
         uses: actions/download-artifact@v2
         with:
           name: varus-integration-release
-          path: ./ShopIntegration
+          path: ./ShopIntegration/VarusIntegration
       - name: Download atb integration
         uses: actions/download-artifact@v2
         with:
           name: atb-integration-release
-          path: ./ShopIntegration
+          path: ./ShopIntegration/AtbIntegration
       - name: Install dependencies
         run: dotnet restore
       - name: Build
