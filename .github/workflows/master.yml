@@ -94,7 +94,7 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build --configuration Release --no-restore -v n -o product-searcher-release
+        run: dotnet build --configuration Release --no-restore -v n
       - name: Test
         run: dotnet test --no-restore --verbosity normal
       - name: Download angualar app
@@ -102,6 +102,8 @@ jobs:
         with:
           name: build-angular-app
           path: ./product-searcher-release/wwwroot
+      - name: Publish
+        run: dotnet build --configuration Release --no-restore -v n -o product-searcher-release
       - name: Publish artifacts
         uses: actions/upload-artifact@v2
         with:
