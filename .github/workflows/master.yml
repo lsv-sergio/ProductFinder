@@ -104,9 +104,13 @@ jobs:
           path: product-searcher-release/ShopIntegration/AtbIntegration
       - name: Publish
         run: dotnet build --configuration Release --no-restore -v n -o product-searcher-release
-      - name: Publish artifacts
-        uses: actions/upload-artifact@v2
+      - name: Brotli compress the html, css and js files in the "build" directory
+        uses: charlesworth/compress-action@1.0
         with:
-          name: product-searcher-release
-          path: ./product-searcher-release
-          retention-days: 1
+          target-directory: ${{product-searcher-release}}
+#      - name: Publish artifacts
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: product-searcher-release
+#          path: ./product-searcher-release
+#          retention-days: 1
