@@ -59,19 +59,23 @@ namespace ProductSearcher.Services
 
 		private IProductSearchExecutor TryGetSearchExecutor(string file, Type productParserType,
 			Type searchUrlBuilderType) {
-			var finderAssembly = Assembly.LoadFile(file);
-			var allTypes = finderAssembly.GetTypes();
-			var productParser = allTypes.FirstOrDefault(productParserType.IsAssignableFrom);
-			var searchUrlBuilder = allTypes.FirstOrDefault(searchUrlBuilderType.IsAssignableFrom);
-			if (productParser is null || searchUrlBuilder is null) {
+			try {
+				var finderAssembly = Assembly.LoadFile(file);
+				var allTypes = finderAssembly.GetTypes();
+				var productParser = allTypes.FirstOrDefault(productParserType.IsAssignableFrom);
+				var searchUrlBuilder = allTypes.FirstOrDefault(searchUrlBuilderType.IsAssignableFrom);
+				if (productParser is null || searchUrlBuilder is null) {
+					return null;
+				}
+
+				var searchExecutor = _productSearchExecutorFactory.Create(
+					Activator.CreateInstance(productParser) as IProductParser,
+					Activator.CreateInstance(searchUrlBuilder) as ISearchUrlBuilder);
+				searchExecutor.Name = GetNameFromFile(file);
+				return searchExecutor;
+			} catch {
 				return null;
 			}
-
-			var searchExecutor = _productSearchExecutorFactory.Create(
-				Activator.CreateInstance(productParser) as IProductParser,
-				Activator.CreateInstance(searchUrlBuilder) as ISearchUrlBuilder);
-			searchExecutor.Name = GetNameFromFile(file);
-			return searchExecutor;
 		}
 
 		#endregion
