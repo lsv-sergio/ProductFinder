@@ -6,6 +6,9 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+env:
+  target-name: product-searcher-release
+  integrations-target-name: ${{env.target-name}}/ShopIntegration
 
 jobs:
   build-core:
@@ -85,27 +88,27 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build-angular-app
-          path: ./product-searcher-release/wwwroot
+          path: ./${{env.target-name}}/wwwroot
       - name: Download novus integration
         uses: actions/download-artifact@v2
         with:
           name: novus-integration-release
-          path: product-searcher-release/ShopIntegration/NovusIntegration
+          path: ${{env.integrations-target-name}}/NovusIntegration
       - name: Download varus integration
         uses: actions/download-artifact@v2
         with:
           name: varus-integration-release
-          path: product-searcher-release/ShopIntegration/VarusIntegration
+          path: ${{env.integrations-target-name}}/VarusIntegration
       - name: Download atb integration
         uses: actions/download-artifact@v2
         with:
           name: atb-integration-release
-          path: product-searcher-release/ShopIntegration/AtbIntegration
+          path: ${{env.integrations-target-name}}/AtbIntegration
       - name: Publish
-        run: dotnet build --configuration Release --no-restore -v n -o product-searcher-release
+        run: dotnet build --configuration Release --no-restore -v n -o ${{env.target-name}}
       - name: Publish artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: product-searcher-release
-          path: product-searcher-release/
+          name: ${{env.target-name}}
+          path: ${{env.target-name}}/
           retention-days: 1
