@@ -103,11 +103,9 @@ jobs:
           path: product-searcher-release/ShopIntegration/AtbIntegration
       - name: Publish
         run: dotnet build --configuration Release --no-restore -v n -o product-searcher-release
-      - name: Zip Folder
-        run: zip -r product-searcher-release.zip product-searcher-release/*
       - name: Publish artifacts
         uses: actions/upload-artifact@v2
         with:
           name: product-searcher-release
-          path: product-searcher-release.zip
+          path: product-searcher-release/
           retention-days: 1
