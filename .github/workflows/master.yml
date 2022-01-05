@@ -55,7 +55,6 @@ jobs:
           name: build-angular-app
           path: ProductSearcher/ClientApp/dist
 
-
   build:
     needs: [build-core, build-novus-integration, build-varus-integration, build-atb-integration, build-angular-app]
     runs-on: ubuntu-latest
@@ -107,7 +106,7 @@ jobs:
       - name: Brotli compress the html, css and js files in the "build" directory
         uses: charlesworth/compress-action@1.0
         with:
-          target-directory: ${{product-searcher-release}}
+          target-directory: product-searcher-release
 #      - name: Publish artifacts
 #        uses: actions/upload-artifact@v2
 #        with:
