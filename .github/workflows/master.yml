@@ -109,4 +109,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: product-searcher-release.zip
+          path: product-searcher-release.zip
           retention-days: 1
