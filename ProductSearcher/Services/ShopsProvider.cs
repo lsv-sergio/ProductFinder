@@ -46,22 +46,32 @@ namespace ProductSearcher.Services
 			var productParserType = typeof(IProductParser);
 			var searchUrlBuilderType = typeof(ISearchUrlBuilder);
 			foreach (var file in files) {
-				var finderAssembly = Assembly.LoadFile(file);
-				var allTypes = finderAssembly.GetTypes();
-				var productParser = allTypes.FirstOrDefault(type => productParserType.IsAssignableFrom(type));
-				var searchUrlBuilder = allTypes.FirstOrDefault(type => searchUrlBuilderType.IsAssignableFrom(type));
-				if (productParser is null || searchUrlBuilder is null) {
+				var searchExecutor = TryGetSearchExecutor(file, productParserType, searchUrlBuilderType);
+				if (searchExecutor == null) {
 					continue;
 				}
 
-				var searchExecutor = _productSearchExecutorFactory.Create(
-					Activator.CreateInstance(productParser) as IProductParser,
-					Activator.CreateInstance(searchUrlBuilder) as ISearchUrlBuilder);
-				searchExecutor.Name = GetNameFromFile(file);
 				finders.Add(searchExecutor);
 			}
 
 			return finders;
+		}
+
+		private IProductSearchExecutor TryGetSearchExecutor(string file, Type productParserType,
+			Type searchUrlBuilderType) {
+			var finderAssembly = Assembly.LoadFile(file);
+			var allTypes = finderAssembly.GetTypes();
+			var productParser = allTypes.FirstOrDefault(productParserType.IsAssignableFrom);
+			var searchUrlBuilder = allTypes.FirstOrDefault(searchUrlBuilderType.IsAssignableFrom);
+			if (productParser is null || searchUrlBuilder is null) {
+				return null;
+			}
+
+			var searchExecutor = _productSearchExecutorFactory.Create(
+				Activator.CreateInstance(productParser) as IProductParser,
+				Activator.CreateInstance(searchUrlBuilder) as ISearchUrlBuilder);
+			searchExecutor.Name = GetNameFromFile(file);
+			return searchExecutor;
 		}
 
 		#endregion
