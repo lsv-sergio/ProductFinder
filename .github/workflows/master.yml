@@ -105,8 +105,8 @@ jobs:
         run: dotnet build --configuration Release --no-restore -v n -o product-searcher-release
       - name: Zip Folder
         run: zip -r product-searcher-release.zip product-searcher-release/*
-#      - name: Publish artifacts
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: product-searcher-release.zip
-#          retention-days: 1
+      - name: Publish artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: product-searcher-release.zip
+          retention-days: 1
