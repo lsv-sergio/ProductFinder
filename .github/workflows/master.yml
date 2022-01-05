@@ -20,7 +20,7 @@ jobs:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-integration-project.yml@main
     needs: build-core
     with:
-      branch: novus-${{env.integrations-source-path-suffix}}
+      branch: novus-integration
       outputDirName: novus-${{env.release-source-path-suffix}}
       sourcePath: novus-${{env.integrations-source-path-suffix}}
 
@@ -28,7 +28,7 @@ jobs:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-integration-project.yml@main
     needs: build-core
     with:
-      branch: varus-${{env.integrations-source-path-suffix}}
+      branch: varus-integration
       outputDirName: varus-${{env.release-source-path-suffix}}
       sourcePath: varus-${{env.integrations-source-path-suffix}}
 
@@ -36,7 +36,7 @@ jobs:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-integration-project.yml@main
     needs: build-core
     with:
-      branch: atb-${{env.integrations-source-path-suffix}}
+      branch: atb-integration
       outputDirName: atb--${{env.release-source-path-suffix}}
       sourcePath: atb-${{env.integrations-source-path-suffix}}
 
