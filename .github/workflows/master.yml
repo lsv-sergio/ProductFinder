@@ -103,11 +103,10 @@ jobs:
           path: product-searcher-release/ShopIntegration/AtbIntegration
       - name: Publish
         run: dotnet build --configuration Release --no-restore -v n -o product-searcher-release
-      - uses: montudor/action-zip@v1
-        with:
-          args: zip -qq -r product-searcher-release.zip product-searcher-release
-      - name: Publish artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: product-searcher-release.zip
-          retention-days: 1
+      - name: Zip Folder
+        run: zip -r product-searcher-release.zip product-searcher-release/*
+#      - name: Publish artifacts
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: product-searcher-release.zip
+#          retention-days: 1
