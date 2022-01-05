@@ -8,7 +8,7 @@ on:
     branches: [ master ]
 env:
   target-name: product-searcher-release
-  integrations-target-name: ${{env.target-name}}/ShopIntegration
+  integrations-target-name: product-searcher-release/ShopIntegration
 
 jobs:
   build-core:
