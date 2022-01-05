@@ -9,6 +9,8 @@ on:
 env:
   target-name: product-searcher-release
   integrations-target-name: product-searcher-release/ShopIntegration
+  integrations-source-path-suffix: integration
+  release-source-path-suffix: integration-release
 
 jobs:
   build-core:
@@ -18,25 +20,25 @@ jobs:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-integration-project.yml@main
     needs: build-core
     with:
-      branch: novus-integration
-      outputDirName: novus-integration-release
-      sourcePath: NovusIntegration
+      branch: novus-${{env.integrations-source-path-suffix}}
+      outputDirName: novus-${{env.release-source-path-suffix}}
+      sourcePath: novus-${{env.integrations-source-path-suffix}}
 
   build-varus-integration:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-integration-project.yml@main
     needs: build-core
     with:
-      branch: varus-integration
-      outputDirName: varus-integration-release
-      sourcePath: VarusIntegration
+      branch: varus-${{env.integrations-source-path-suffix}}
+      outputDirName: varus-${{env.release-source-path-suffix}}
+      sourcePath: varus-${{env.integrations-source-path-suffix}}
 
   build-atb-integration:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-integration-project.yml@main
     needs: build-core
     with:
-      branch: atb-integration
-      outputDirName: atb-integration-release
-      sourcePath: AtbIntegration
+      branch: atb-${{env.integrations-source-path-suffix}}
+      outputDirName: atb--${{env.release-source-path-suffix}}
+      sourcePath: atb-${{env.integrations-source-path-suffix}}
 
   build-angular-app:
     runs-on: ubuntu-latest
@@ -92,18 +94,18 @@ jobs:
       - name: Download novus integration
         uses: actions/download-artifact@v2
         with:
-          name: novus-integration-release
-          path: ${{env.integrations-target-name}}/NovusIntegration
+          name: novus--${{env.release-source-path-suffix}}
+          path: ${{env.integrations-target-name}}/novus-${{env.integrations-source-path-suffix}}
       - name: Download varus integration
         uses: actions/download-artifact@v2
         with:
-          name: varus-integration-release
-          path: ${{env.integrations-target-name}}/VarusIntegration
+          name: varus--${{env.release-source-path-suffix}}
+          path: ${{env.integrations-target-name}}/varus-${{env.integrations-source-path-suffix}}
       - name: Download atb integration
         uses: actions/download-artifact@v2
         with:
-          name: atb-integration-release
-          path: ${{env.integrations-target-name}}/AtbIntegration
+          name: atb--${{env.release-source-path-suffix}}
+          path: ${{env.integrations-target-name}}/atb-${{env.integrations-source-path-suffix}}
       - name: Publish
         run: dotnet build --configuration Release --no-restore -v n -o ${{env.target-name}}
       - name: Publish artifacts
