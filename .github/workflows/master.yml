@@ -108,6 +108,6 @@ jobs:
       - name: Publish artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: product-searcher-release.zip
+          name: product-searcher-release
           path: product-searcher-release.zip
           retention-days: 1
