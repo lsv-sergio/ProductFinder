@@ -9,7 +9,7 @@ on:
 env:
   target-name: product-searcher-release
   integrations-target-name: product-searcher-release/ShopIntegration
-  source-path-suffix: novus-integration
+  source-path-suffix: integration
 
 jobs:
   build-core:
@@ -21,7 +21,7 @@ jobs:
     with:
       branch: novus-integration
       outputDirName: novus-integration-release
-      sourcePath: ${{env.source-path-suffix}}
+      sourcePath: novus-${{env.source-path-suffix}}
 
   build-varus-integration:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-integration-project.yml@main
@@ -94,7 +94,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: novus-integration-release
-          path: ${{env.integrations-target-name}}/${{env.source-path-suffix}}
+          path: ${{env.integrations-target-name}}/novus-${{env.source-path-suffix}}
       - name: Download varus integration
         uses: actions/download-artifact@v2
         with:
