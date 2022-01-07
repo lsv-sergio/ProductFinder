@@ -10,11 +10,9 @@ import {ClientIdProvider} from "../../services/signalR-wrapper.service";
 	styleUrls: ['./search-options.component.scss']
 })
 export class SearchOptionsComponent implements OnInit {
-	public get searchOptionsFormArray() {
-		return this.search.controls.options as FormArray;
-	}
-
 	public stores: Shop[] = [];
+	public search: FormGroup;
+	public inProgress: boolean = false;
 
 	constructor(private _searchService: SearchService,
 				private _storesService: ShopsService,
@@ -26,8 +24,9 @@ export class SearchOptionsComponent implements OnInit {
 		});
 	}
 
-	public search: FormGroup;
-	public inProgress: boolean = false;
+	public get searchOptionsFormArray() {
+		return this.search.controls.options as FormArray;
+	}
 
 	ngOnInit(): void {
 		this._storesService.getStores()

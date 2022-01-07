@@ -1,6 +1,6 @@
-<div class="found-result-panel" *ngIf="hasResults">
-	<button mat-button (click)="openAll()">Expand All</button>
-	<button mat-button (click)="closeAll()">Collapse All</button>
+<div *ngIf="hasResults" class="found-result-panel">
+	<button (click)="openAll()" mat-button>Expand All</button>
+	<button (click)="closeAll()" mat-button>Collapse All</button>
 </div>
 <mat-accordion class="example-headers-align" multi>
 	<mat-expansion-panel *ngFor="let result of searchResult">
@@ -17,7 +17,7 @@
 				<mat-card class="example-card">
 					<mat-card-title-group>
 						<mat-card-title>{{product.name}}</mat-card-title>
-						<img mat-card-md-image [src]="product.image" [alt]="product.id">
+						<img [alt]="product.id" [src]="product.image" mat-card-md-image>
 					</mat-card-title-group>
 					<mat-card-content>
 						{{product.price}}

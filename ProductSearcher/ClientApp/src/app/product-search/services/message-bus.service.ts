@@ -30,13 +30,6 @@ export class MessageBusService {
 		_signalRWrapper.setResultReceivedHandler(this._onResultReceivedHandler.bind(this));
 	}
 
-	private _onResultReceivedHandler(searchResult: SearchResponse) {
-		this._channel.next({
-			type: "result_received",
-			payload: {result: searchResult} as SearchResultData
-		} as Message);
-	}
-
 	public publishMessage(message: Message) {
 		this._channel.next(message);
 	}
@@ -45,5 +38,12 @@ export class MessageBusService {
 		return this._channel.pipe(
 			filter(message => message.type === type),
 			map(message => message.payload))
+	}
+
+	private _onResultReceivedHandler(searchResult: SearchResponse) {
+		this._channel.next({
+			type: "result_received",
+			payload: {result: searchResult} as SearchResultData
+		} as Message);
 	}
 }

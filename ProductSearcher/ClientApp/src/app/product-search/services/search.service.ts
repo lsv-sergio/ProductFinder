@@ -4,11 +4,12 @@ import {Observable} from "rxjs";
 import {SearchResponse} from "../models";
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class SearchService {
 
-	constructor(private _httpClient: HttpClient) {}
+	constructor(private _httpClient: HttpClient) {
+	}
 
 	public find(productName: string, clientId: string, searchOptions: string[]): Observable<SearchResponse[]> {
 		return this._httpClient.post<SearchResponse[]>('api/search', {

@@ -11,13 +11,12 @@ import {Subject} from "rxjs";
 	styleUrls: ['./found-result.component.scss']
 })
 export class FoundResultComponent implements OnInit, OnDestroy {
+	public searchResult: SearchResponse[] = [];
 	@ViewChild(MatAccordion, {static: true}) private _accordion: MatAccordion | undefined;
 	private destroyed: Subject<void> = new Subject<void>();
 
 	constructor(private _messageBusService: MessageBusService) {
 	}
-
-	public searchResult: SearchResponse[] = [];
 
 	public get hasResults(): boolean {
 		return this.searchResult?.length > 0;
