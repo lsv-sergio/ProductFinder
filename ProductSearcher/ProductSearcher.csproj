@@ -51,6 +51,25 @@
         </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\0b9b6aaeb178aa0f4f6d59bc6bd213ac849e2934"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\26defab36e5b5835a593d0cc212a6df92e2ef587"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\36416961330e3270b35c8f60ec9a5cb9ea3c5917"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\50a24592a81d70079d905c8222308b03e173c266"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\5220c723a524d9dde1e45862f2443725cf713142"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\5972544d26fb263682abec059306855d88c28d88"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\754641c8447c76583c7979efb4fc52bda61adcc8"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\8a954ab0f8921e4f039d670ab785eca244e4e4cf"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\8b7f07d443d1b1025ede1fbbb64d9c033691dea2"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\baf6a339c005afd54261d864f17defef5b2d44c4"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\cdb6ad0ae997cbf323da8518bbb13e2f3d60e29f"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\dc85ee408b717a8a41b362960a82a02cd43d5ec8"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\e33b6d999d00e52d046edb5bac84367664a01e70"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\e554b372e8f93d4d5e382e9d0adae4e82cf15695"/>
+        <Folder Include="ClientApp\.angular\cache\angular-webpack\f9e39a9d6c4ea12f9c58298cfd503f5e51ac1839"/>
+        <Folder Include="ClientApp\.angular\cache\babel-webpack"/>
+    </ItemGroup>
+
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
         <!-- Ensure Node.js is installed -->
         <Exec Command="node --version" ContinueOnError="true">
