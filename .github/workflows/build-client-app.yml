@@ -46,4 +46,10 @@ jobs:
             - name: Test
               run: |
                   npm run test
+            - name: publish artefacts
+              uses: actions/upload-artifact@v2
+              with:
+                name: client-app
+                path: ./dist/client-app
+                retention-days: 1
 
