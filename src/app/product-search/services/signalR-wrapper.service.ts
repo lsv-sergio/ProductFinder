@@ -1,6 +1,6 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {SearchResponse} from "../models";
-import {HubConnection} from "@microsoft/signalr";
+import {SearchResponse} from '../models';
+import {HubConnection} from '@microsoft/signalr';
 
 export interface ClientIdProvider {
 	get clientId(): string

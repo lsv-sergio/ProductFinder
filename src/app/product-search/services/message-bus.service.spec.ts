@@ -1,8 +1,8 @@
 import {TestBed} from '@angular/core/testing';
 
 import {MessageBusService} from './message-bus.service';
-import {SignalRWrapperStubService} from "./signalR-wrapper-stub.service";
-import {SignalRWrapperService} from "./signalR-wrapper.service";
+import {SignalRWrapperStubService} from './signalR-wrapper-stub.service';
+import {SignalRWrapperService} from './signalR-wrapper.service';
 
 describe('MessageBusService', () => {
 	let service: MessageBusService;

@@ -1,27 +1,27 @@
-import {FactoryProvider, NgModule, Provider} from '@angular/core';
+import {NgModule, Provider} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
-import {SearchOptionsComponent} from "./components/search-options/search-options.component";
-import {FoundResultComponent} from "./components/found-result/found-result.component";
-import {MatIconModule} from "@angular/material/icon";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatGridListModule} from "@angular/material/grid-list";
-import {MatBadgeModule} from "@angular/material/badge";
-import {MatCardModule} from "@angular/material/card";
-import {MatButtonModule} from "@angular/material/button";
-import {MatExpansionModule} from "@angular/material/expansion";
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {SignalRWrapperService} from "./services";
-import {CLIENT_ID_TOKEN} from "./models";
-import * as signalR from "@microsoft/signalr";
-import {HubConnection} from "@microsoft/signalr";
-import {ProductSearchRoutingModule} from "./product-search-routing.module";
-import {MessageBusService, SearchService, ShopsService} from "./services";
-import {environment} from "../../environments/environment";
-import {SignalRWrapperStubService} from "./services";
+import {SearchOptionsComponent} from './components/search-options/search-options.component';
+import {FoundResultComponent} from './components/found-result/found-result.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {SignalRWrapperService} from './services';
+import {CLIENT_ID_TOKEN} from './models';
+import * as signalR from '@microsoft/signalr';
+import {HubConnection} from '@microsoft/signalr';
+import {ProductSearchRoutingModule} from './product-search-routing.module';
+import {MessageBusService, SearchService, ShopsService} from './services';
+import {environment} from '../../environments/environment';
+import {SignalRWrapperStubService} from './services';
 
 const providers: Provider[] = [
 	MessageBusService,
@@ -39,9 +39,9 @@ if (environment.production) {
 		.build();
 	providers.push(	SignalRWrapperService);
 	providers.push({
-			provide: HubConnection,
-			useFactory: () => signalRHubConnection
-		},
+		provide: HubConnection,
+		useFactory: () => signalRHubConnection
+	},
 	);
 } else {
 	providers.push({
@@ -50,27 +50,27 @@ if (environment.production) {
 	});
 }
 @NgModule({
-  declarations: [
-    ProductSearchComponent,
-	  SearchOptionsComponent,
-	  FoundResultComponent
-  ],
-  imports: [
-    CommonModule,
-	  ProductSearchRoutingModule,
-	  MatFormFieldModule,
-	  MatInputModule,
-	  MatIconModule,
-	  FormsModule,
-	  ReactiveFormsModule,
-	  MatGridListModule,
-	  MatBadgeModule,
-	  MatCardModule,
-	  MatButtonModule,
-	  MatExpansionModule,
-	  MatSlideToggleModule,
-	  MatProgressSpinnerModule,
-  ],
+	declarations: [
+		ProductSearchComponent,
+		SearchOptionsComponent,
+		FoundResultComponent
+	],
+	imports: [
+		CommonModule,
+		ProductSearchRoutingModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatIconModule,
+		FormsModule,
+		ReactiveFormsModule,
+		MatGridListModule,
+		MatBadgeModule,
+		MatCardModule,
+		MatButtonModule,
+		MatExpansionModule,
+		MatSlideToggleModule,
+		MatProgressSpinnerModule,
+	],
 	providers: providers,
 })
 export class ProductSearchModule { }

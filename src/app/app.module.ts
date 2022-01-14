@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatButtonModule} from "@angular/material/button";
-import {CommonModule} from "@angular/common";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {BrowserModule} from "@angular/platform-browser";
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {CommonModule} from '@angular/common';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {environment} from '../environments/environment';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {BackendInterceptorMock} from "./mocks/backend-interceptor-mock";
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {BackendInterceptorMock} from './mocks/backend-interceptor-mock';
 
 const providers = [];
 if (!environment.production) {
@@ -20,9 +19,9 @@ if (!environment.production) {
 	});
 }
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+	declarations: [
+		AppComponent
+	],
 	imports: [
 		CommonModule,
 		BrowserAnimationsModule,
@@ -31,7 +30,7 @@ if (!environment.production) {
 		MatToolbarModule,
 		MatButtonModule
 	],
-  providers: providers,
-  bootstrap: [AppComponent]
+	providers: providers,
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

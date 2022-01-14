@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 
 import {SignalRWrapperService} from './signalR-wrapper.service';
-import {HubConnection} from "@microsoft/signalr";
+import {HubConnection} from '@microsoft/signalr';
 
 describe('SignalRWrapperService', () => {
 	let service: SignalRWrapperService;
@@ -15,7 +15,9 @@ describe('SignalRWrapperService', () => {
 					useValue: {
 						start: () => Promise.resolve({}),
 						stop: () => Promise.resolve({}),
+						//eslint-disable-next-line @typescript-eslint/no-empty-function
 						on: () => {},
+						//eslint-disable-next-line @typescript-eslint/no-empty-function
 						off: () => {},
 						connectionId: ''
 					}

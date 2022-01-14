@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {SearchResponse} from "../models";
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {SearchResponse} from '../models';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class SearchService {
 

@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
-import {CLIENT_ID_TOKEN, Shop} from "../../models";
-import {Message, MessageBusService, SearchService, SearchStartedMessageData, ShopsService} from "../../services";
-import {ClientIdProvider} from "../../services/signalR-wrapper.service";
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import {CLIENT_ID_TOKEN, Shop} from '../../models';
+import {Message, MessageBusService, SearchService, SearchStartedMessageData, ShopsService} from '../../services';
+import {ClientIdProvider} from '../../services/signalR-wrapper.service';
 
 @Component({
 	selector: 'app-search-options',
@@ -27,15 +27,15 @@ export class SearchOptionsComponent implements OnInit {
 	}
 
 	public search: FormGroup;
-	public inProgress: boolean = false;
+	public inProgress = false;
 
 	ngOnInit(): void {
 		this._storesService.getStores()
 			.subscribe(response => {
-				this.stores = response
+				this.stores = response;
 				const options = this.searchOptionsFormArray;
 				this.stores.forEach(() => {
-					options.push(new FormControl(true))
+					options.push(new FormControl(true));
 				});
 			});
 	}
@@ -49,6 +49,6 @@ export class SearchOptionsComponent implements OnInit {
 		this._messageBus.publishMessage({
 			type: 'search_started',
 			payload: {searchOptions: searchOptions} as SearchStartedMessageData
-		} as Message)
+		} as Message);
 	}
 }

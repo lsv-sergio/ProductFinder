@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {SearchResponse} from "../../models";
-import {MatAccordion} from "@angular/material/expansion";
-import {MessageBusService, SearchResultData, SearchStartedMessageData} from "../../services";
-import {takeUntil} from "rxjs/operators";
-import {Subject} from "rxjs";
+import {SearchResponse} from '../../models';
+import {MatAccordion} from '@angular/material/expansion';
+import {MessageBusService, SearchResultData, SearchStartedMessageData} from '../../services';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 @Component({
 	selector: 'app-found-result',
@@ -21,7 +21,7 @@ export class FoundResultComponent implements OnInit, OnDestroy {
 
 	public get hasResults(): boolean {
 		return this.searchResult?.length > 0;
-	};
+	}
 
 	ngOnInit(): void {
 		this._messageBusService.on<SearchStartedMessageData>('search_started')
@@ -48,7 +48,7 @@ export class FoundResultComponent implements OnInit, OnDestroy {
 
 	private _onSearchStartedReceived(messageData: SearchStartedMessageData) {
 		this.searchResult = messageData.searchOptions.map(shop => {
-			return {storeName: shop, products: []} as SearchResponse
+			return {storeName: shop, products: []} as SearchResponse;
 		});
 	}
 
