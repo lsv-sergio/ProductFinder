@@ -46,7 +46,7 @@ jobs:
             - name: Test
               run: |
                   npm run test
-            - name: publish artefacts
+            - name: publish artifacts
               uses: actions/upload-artifact@v2
               with:
                 name: client-app
