@@ -38,28 +38,28 @@ jobs:
       outputDirName: atb-integration-release
       sourcePath: AtbIntegration
 
-  build-angular-app:
-    runs-on: ubuntu-latest
-    env:
-      working-directory: ProductSearcher/ClientApp
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install node
-        uses: actions/setup-node@v2
-      - name: Install NPM Modules
-        run: npm install
-        working-directory: ${{env.working-directory}}
-      - name: Build Project
-        run: npm run build
-        working-directory: ${{env.working-directory}}
-      - name: Archive build
-        uses: actions/upload-artifact@v1
-        with:
-          name: build-angular-app
-          path: ProductSearcher/ClientApp/dist
+  build-client-app:
+    uses: lsv-sergio/ProductFinder/.github/workflows/build-client-app.yml@client-app
+#    env:
+#      working-directory: ProductSearcher/ClientApp
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Install node
+#        uses: actions/setup-node@v2
+#      - name: Install NPM Modules
+#        run: npm install
+#        working-directory: ${{env.working-directory}}
+#      - name: Build Project
+#        run: npm run build
+#        working-directory: ${{env.working-directory}}
+#      - name: Archive build
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: build-client-app
+#          path: ProductSearcher/ClientApp/dist
 
   build:
-    needs: [build-core, build-novus-integration, build-varus-integration, build-atb-integration, build-angular-app]
+    needs: [build-core, build-novus-integration, build-varus-integration, build-atb-integration, build-client-app]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -87,7 +87,7 @@ jobs:
       - name: Download angualar app
         uses: actions/download-artifact@v2
         with:
-          name: build-angular-app
+          name: client-app
           path: ./${{env.target-name}}/wwwroot
       - name: Download novus integration
         uses: actions/download-artifact@v2
