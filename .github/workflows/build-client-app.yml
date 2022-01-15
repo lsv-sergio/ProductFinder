@@ -1,8 +1,6 @@
 name: Build client-app
 on:
     workflow_call:
-    push:
-        branches: [client-app]
 jobs:
     ci:
         runs-on: ubuntu-latest
