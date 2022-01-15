@@ -40,23 +40,6 @@ jobs:
 
   build-client-app:
     uses: lsv-sergio/ProductFinder/.github/workflows/build-client-app.yml@client-app
-#    env:
-#      working-directory: ProductSearcher/ClientApp
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Install node
-#        uses: actions/setup-node@v2
-#      - name: Install NPM Modules
-#        run: npm install
-#        working-directory: ${{env.working-directory}}
-#      - name: Build Project
-#        run: npm run build
-#        working-directory: ${{env.working-directory}}
-#      - name: Archive build
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: build-client-app
-#          path: ProductSearcher/ClientApp/dist
 
   build:
     needs: [build-core, build-novus-integration, build-varus-integration, build-atb-integration, build-client-app]
