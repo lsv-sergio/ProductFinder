@@ -38,36 +38,45 @@
         <None Update="ShopIntegration\Novus\NovusIntegrator.dll">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <Content Update="wwwroot\favicon.ico">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\main.4de6cc4dec00f60f.js">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\polyfills.f514913fa3bcd22d.js">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\runtime.e030c5a7e493f3a9.js">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\styles.ef46db3751d8e999.css">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Remove="wwwroot\styles.3f67fd504fb0fdff.css"/>
+        <Content Remove="wwwroot\runtime.cb2efa9c5b618db3.js"/>
+        <Content Remove="wwwroot\polyfills.4a03ad532fe51edd.js"/>
+        <Content Remove="wwwroot\main.9bbd3f05091f5af8.js"/>
+        <Content Remove="wwwroot\index.html"/>
+        <Content Remove="wwwroot\3rdpartylicenses.txt"/>
+        <Content Remove="wwwroot\141.b56e9b2cf4efe8c8.js"/>
     </ItemGroup>
 
     <ItemGroup>
         <_ContentIncludedByDefault Remove="Pages\Error.cshtml"/>
         <_ContentIncludedByDefault Remove="Pages\_ViewImports.cshtml"/>
+        <_ContentIncludedByDefault Remove="ClientApp\angular.json"/>
+        <_ContentIncludedByDefault Remove="ClientApp\package-lock.json"/>
+        <_ContentIncludedByDefault Remove="ClientApp\package.json"/>
+        <_ContentIncludedByDefault Remove="ClientApp\tsconfig.app.json"/>
+        <_ContentIncludedByDefault Remove="ClientApp\tsconfig.json"/>
+        <_ContentIncludedByDefault Remove="ClientApp\tsconfig.spec.json"/>
     </ItemGroup>
 
     <ItemGroup>
         <Reference Include="ProductFinder.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\ProductFinder.Core\ProductFinder.Core.dll</HintPath>
         </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\0b9b6aaeb178aa0f4f6d59bc6bd213ac849e2934"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\26defab36e5b5835a593d0cc212a6df92e2ef587"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\36416961330e3270b35c8f60ec9a5cb9ea3c5917"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\50a24592a81d70079d905c8222308b03e173c266"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\5220c723a524d9dde1e45862f2443725cf713142"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\5972544d26fb263682abec059306855d88c28d88"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\754641c8447c76583c7979efb4fc52bda61adcc8"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\8a954ab0f8921e4f039d670ab785eca244e4e4cf"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\8b7f07d443d1b1025ede1fbbb64d9c033691dea2"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\baf6a339c005afd54261d864f17defef5b2d44c4"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\cdb6ad0ae997cbf323da8518bbb13e2f3d60e29f"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\dc85ee408b717a8a41b362960a82a02cd43d5ec8"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\e33b6d999d00e52d046edb5bac84367664a01e70"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\e554b372e8f93d4d5e382e9d0adae4e82cf15695"/>
-        <Folder Include="ClientApp\.angular\cache\angular-webpack\f9e39a9d6c4ea12f9c58298cfd503f5e51ac1839"/>
-        <Folder Include="ClientApp\.angular\cache\babel-webpack"/>
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
