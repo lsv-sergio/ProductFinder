@@ -15,10 +15,8 @@ describe('SignalRWrapperService', () => {
 					useValue: {
 						start: () => Promise.resolve({}),
 						stop: () => Promise.resolve({}),
-						//eslint-disable-next-line @typescript-eslint/no-empty-function
-						on: () => {},
-						//eslint-disable-next-line @typescript-eslint/no-empty-function
-						off: () => {},
+						on: () => jest.fn(),
+						off: () => jest.fn(),
 						connectionId: ''
 					}
 				}
