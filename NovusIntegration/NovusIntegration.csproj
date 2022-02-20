@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <EnableDynamicLoading>true</EnableDynamicLoading>
     </PropertyGroup>
 
     <ItemGroup>
@@ -17,16 +18,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="bin\**" />
-      <None Update="ProductFinder.Core.dll">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
-
-    <ItemGroup>
       <Reference Include="ProductFinder.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
         <HintPath>ProductFinder.Core.dll</HintPath>
+          <Private>false</Private>
+          <ExcludeAssets>runtime</ExcludeAssets>
       </Reference>
     </ItemGroup>
-
 </Project>
