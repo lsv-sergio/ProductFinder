@@ -3,9 +3,9 @@ namespace ProductSearcher.Services
 	using System;
 	using System.Collections.Generic;
 	using System.IO;
-	using System.Linq;
 	using System.Reflection;
-	using Models;
+	using System.Runtime.Loader;
+	using ProductFinder.Core.Interfaces;
 
 	#region Class: ${Name}
 
@@ -13,6 +13,8 @@ namespace ProductSearcher.Services
 	{
 
 		#region Fields: Private
+
+		private readonly Func<string, AssemblyLoadContext> _assemblyLoadContextFactory;
 
 		private readonly IProductSearchExecutorFactory _productSearchExecutorFactory;
 		private List<IProductSearchExecutor> _finders;
@@ -23,8 +25,10 @@ namespace ProductSearcher.Services
 
 		#region Constructors: Public
 
-		public ShopsProvider(IProductSearchExecutorFactory productSearchExecutorFactoryFactory) {
+		public ShopsProvider(IProductSearchExecutorFactory productSearchExecutorFactoryFactory,
+			Func<string, AssemblyLoadContext> assemblyLoadContextFactory) {
 			_productSearchExecutorFactory = productSearchExecutorFactoryFactory;
+			_assemblyLoadContextFactory = assemblyLoadContextFactory;
 		}
 
 		#endregion
@@ -32,11 +36,8 @@ namespace ProductSearcher.Services
 		#region Methods: Private
 
 		private static string GetNameFromFile(string file) {
-			var fileName = file.Split("\\", StringSplitOptions.RemoveEmptyEntries)
-				.Last()
-				.Split(".")
-				.First();
-			return fileName.Replace("Integration", "");
+			return Path.GetFileNameWithoutExtension(file)
+				.Replace("Integration", "");
 		}
 
 		private static object GetProductParserType(Type targetType, Assembly assembly) {
@@ -47,11 +48,6 @@ namespace ProductSearcher.Services
 			}
 
 			return null;
-		}
-
-		private static Assembly LoadAssembly(string file) {
-			var loadContext = new ShopIntegrationLoadContext(file);
-			return loadContext.LoadFromAssemblyName(new AssemblyName(Path.GetFileNameWithoutExtension(file)));
 		}
 
 		private List<IProductSearchExecutor> Load() {
@@ -70,6 +66,11 @@ namespace ProductSearcher.Services
 			}
 
 			return finders;
+		}
+
+		private Assembly LoadAssembly(string file) {
+			var loadContext = _assemblyLoadContextFactory(file);
+			return loadContext.LoadFromAssemblyName(new AssemblyName(Path.GetFileNameWithoutExtension(file)));
 		}
 
 		private IProductSearchExecutor TryGetSearchExecutor(string file, Type productParserType,

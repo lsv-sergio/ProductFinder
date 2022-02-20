@@ -1,11 +1,14 @@
 namespace ProductSearcher
 {
+	using System;
+	using System.Runtime.Loader;
 	using Hubs;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Hosting;
 	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
+	using Models;
 	using ProductFinder.Core.Interfaces;
 	using ProductFinder.Core.Services;
 	using Services;
@@ -58,6 +61,7 @@ namespace ProductSearcher
 			services.AddSingleton<IShopsProvider, ShopsProvider>();
 			services.AddTransient<IRequestExecutor, RequestExecutor>();
 			services.AddTransient<IProductSearchExecutorFactory, ProductSearchExecutorFactory>();
+			services.AddSingleton<Func<string, AssemblyLoadContext>>(file => new ShopIntegrationLoadContext(file));
 			// services.AddHostedService<ShopsLoader>();
 			services.AddControllers();
 			// In production, the Angular files will be served from this directory
