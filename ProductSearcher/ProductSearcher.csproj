@@ -53,13 +53,88 @@
         <Content Update="wwwroot\styles.ef46db3751d8e999.css">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
-        <Content Remove="wwwroot\styles.3f67fd504fb0fdff.css"/>
         <Content Remove="wwwroot\runtime.cb2efa9c5b618db3.js"/>
         <Content Remove="wwwroot\polyfills.4a03ad532fe51edd.js"/>
         <Content Remove="wwwroot\main.9bbd3f05091f5af8.js"/>
-        <Content Remove="wwwroot\index.html"/>
-        <Content Remove="wwwroot\3rdpartylicenses.txt"/>
         <Content Remove="wwwroot\141.b56e9b2cf4efe8c8.js"/>
+        <Content Update="wwwroot\141.0216be1f58efadac.js">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\3rdpartylicenses.txt">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\index.html">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\main.cc176866408502cb.js">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\polyfills.5796acb65b66bb59.js">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\runtime.4702e330a6f9d788.js">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\styles.3f67fd504fb0fdff.css">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Update="ShopIntegration\Novus\Newtonsoft.Json.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="ShopIntegration\Novus\NovusIntegration.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="ShopIntegration\Novus\NovusIntegration.pdb">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="ShopIntegration\Atb\AtbIntegration.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="ShopIntegration\Atb\AtbIntegration.pdb">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Content Remove="ShopIntegration\Atb\AtbIntegration.deps.json"/>
+        <None Include="ShopIntegration\Atb\AtbIntegration.deps.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Content Remove="ShopIntegration\Atb\AtbIntegration.runtimeconfig.json"/>
+        <None Include="ShopIntegration\Atb\AtbIntegration.runtimeconfig.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Content Remove="ShopIntegration\Atb\AtbIntegration.runtimeconfig.dev.json"/>
+        <None Include="ShopIntegration\Atb\AtbIntegration.runtimeconfig.dev.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="ShopIntegration\Atb\Newtonsoft.Json.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Content Remove="ShopIntegration\Novus\NovusIntegration.deps.json"/>
+        <None Include="ShopIntegration\Novus\NovusIntegration.deps.json"/>
+        <Content Remove="ShopIntegration\Novus\NovusIntegration.runtimeconfig.json"/>
+        <None Include="ShopIntegration\Novus\NovusIntegration.runtimeconfig.json"/>
+        <Content Remove="ShopIntegration\Novus\NovusIntegration.runtimeconfig.dev.json"/>
+        <None Include="ShopIntegration\Novus\NovusIntegration.runtimeconfig.dev.json"/>
+        <None Update="ShopIntegration\Varus\Newtonsoft.Json.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="ShopIntegration\Varus\VarusIntegration.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="ShopIntegration\Varus\VarusIntegration.pdb">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Content Remove="ShopIntegration\Varus\VarusIntegration.deps.json"/>
+        <None Include="ShopIntegration\Varus\VarusIntegration.deps.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Content Remove="ShopIntegration\Varus\VarusIntegration.runtimeconfig.json"/>
+        <None Include="ShopIntegration\Varus\VarusIntegration.runtimeconfig.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Content Remove="ShopIntegration\Varus\VarusIntegration.runtimeconfig.dev.json"/>
+        <None Include="ShopIntegration\Varus\VarusIntegration.runtimeconfig.dev.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
     <ItemGroup>

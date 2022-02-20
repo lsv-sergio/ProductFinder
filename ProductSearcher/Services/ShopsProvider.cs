@@ -5,7 +5,7 @@ namespace ProductSearcher.Services
 	using System.IO;
 	using System.Linq;
 	using System.Reflection;
-	using ProductFinder.Core.Interfaces;
+	using Models;
 
 	#region Class: ${Name}
 
@@ -39,6 +39,21 @@ namespace ProductSearcher.Services
 			return fileName.Replace("Integration", "");
 		}
 
+		private static object GetProductParserType(Type targetType, Assembly assembly) {
+			foreach (var type in assembly.GetTypes()) {
+				if (targetType.IsAssignableFrom(type)) {
+					return Activator.CreateInstance(type);
+				}
+			}
+
+			return null;
+		}
+
+		private static Assembly LoadAssembly(string file) {
+			var loadContext = new ShopIntegrationLoadContext(file);
+			return loadContext.LoadFromAssemblyName(new AssemblyName(Path.GetFileNameWithoutExtension(file)));
+		}
+
 		private List<IProductSearchExecutor> Load() {
 			var files = Directory.GetFiles($"{Directory.GetCurrentDirectory()}\\ShopIntegration", "*Integration.dll",
 				SearchOption.AllDirectories);
@@ -60,17 +75,14 @@ namespace ProductSearcher.Services
 		private IProductSearchExecutor TryGetSearchExecutor(string file, Type productParserType,
 			Type searchUrlBuilderType) {
 			try {
-				var finderAssembly = Assembly.LoadFile(file);
-				var allTypes = finderAssembly.GetTypes();
-				var productParser = allTypes.FirstOrDefault(productParserType.IsAssignableFrom);
-				var searchUrlBuilder = allTypes.FirstOrDefault(searchUrlBuilderType.IsAssignableFrom);
+				var assembly = LoadAssembly(file);
+				var productParser = GetProductParserType(productParserType, assembly) as IProductParser;
+				var searchUrlBuilder = GetProductParserType(searchUrlBuilderType, assembly) as ISearchUrlBuilder;
 				if (productParser is null || searchUrlBuilder is null) {
 					return null;
 				}
 
-				var searchExecutor = _productSearchExecutorFactory.Create(
-					Activator.CreateInstance(productParser) as IProductParser,
-					Activator.CreateInstance(searchUrlBuilder) as ISearchUrlBuilder);
+				var searchExecutor = _productSearchExecutorFactory.Create(productParser, searchUrlBuilder);
 				searchExecutor.Name = GetNameFromFile(file);
 				return searchExecutor;
 			} catch {
